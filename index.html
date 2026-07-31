@@ -1,0 +1,527 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<meta name="theme-color" content="#0f1112" />
+<title>Ananth — Emcee. Host. Storyteller.</title>
+<meta name="description" content="Ananth is a multilingual emcee (Bahasa Malaysia · English · Tamil) hosting stages across Malaysia — from campus fests and gala dinners to government ceremonies." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Permanent+Marker&family=Anton&family=Bebas+Neue&family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;600&family=Noto+Sans+Tamil:wght@600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body class="chalkboard">
+
+<!-- ============ CHALK DUST CANVAS (background particles) ============ -->
+<canvas id="dust" aria-hidden="true"></canvas>
+
+<!-- ============ CUSTOM CURSOR ============ -->
+<div class="cursor" id="cursor" aria-hidden="true">
+  <span class="cursor__ring"></span>
+  <span class="cursor__dot"></span>
+</div>
+
+<!-- ============ LOADER ============ -->
+<div class="loader" id="loader" aria-hidden="true">
+  <svg viewBox="0 0 800 240" class="loader__svg" preserveAspectRatio="xMidYMid meet">
+    <text x="400" y="160" text-anchor="middle" class="loader__text">ANANTH</text>
+  </svg>
+  <span class="loader__sub">tuning the mic…</span>
+</div>
+
+<!-- ============ NAVIGATION ============ -->
+<header class="nav" id="nav">
+  <a href="#top" class="nav__brand" data-cursor="link">
+    <span class="nav__chalk">A.</span>
+    <span class="nav__word">Ananth</span>
+  </a>
+  <nav class="nav__links" aria-label="primary">
+    <a href="#about" data-cursor="link"><span>01</span> About</a>
+    <a href="#stages" data-cursor="link"><span>02</span> Stages</a>
+    <a href="#gallery" data-cursor="link"><span>03</span> Gallery</a>
+    <a href="#voices" data-cursor="link"><span>04</span> Voices</a>
+    <a href="#book" class="nav__cta" data-cursor="link">Book →</a>
+  </nav>
+  <button class="nav__toggle" id="navToggle" aria-label="menu">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="hero__grid"></div>
+  <div class="hero__scribbles" aria-hidden="true">
+    <!-- decorative scribbles -->
+    <svg viewBox="0 0 200 60" class="scribble scribble--1"><path d="M5 40 Q 30 5, 60 30 T 120 25 T 195 35" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    <svg viewBox="0 0 60 60" class="scribble scribble--star"><path d="M30 4 L36 22 L55 22 L40 34 L46 54 L30 42 L14 54 L20 34 L5 22 L24 22 Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+    <svg viewBox="0 0 60 60" class="scribble scribble--spark"><path d="M30 4 V56 M4 30 H56 M12 12 L48 48 M48 12 L12 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    <svg viewBox="0 0 120 40" class="scribble scribble--underline"><path d="M4 30 Q 40 10, 60 25 T 116 20" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+  </div>
+
+  <div class="hero__stage">
+    <div class="hero__eyebrow">
+      <span class="eyebrow-dot"></span>
+      <span>Emcee · Host · Storyteller · Malaysia</span>
+    </div>
+
+    <h1 class="hero__title" aria-label="Ananth">
+      <span class="letter" style="--i:0">A</span><span class="letter" style="--i:1">N</span><span class="letter" style="--i:2">A</span><span class="letter" style="--i:3">N</span><span class="letter" style="--i:4">T</span><span class="letter" style="--i:5">H</span>
+      <span class="hero__title-stroke" aria-hidden="true"></span>
+    </h1>
+
+    <div class="hero__sub">
+      <span class="hero__lead">i hold the mic and </span>
+      <span class="hero__rotator" data-rotator>
+        <span class="rot en">carry the room.</span>
+        <span class="rot bm">bawa suasana.</span>
+        <span class="rot ta">அரங்கை நகர்த்துகிறேன்.</span>
+      </span>
+    </div>
+
+    <p class="hero__blurb">
+      Multilingual host from Kuala Lumpur — comfortable on campus stages, gala dinners,
+      government ceremonies and community events. Formal or fun, in
+      <em>Bahasa Malaysia</em>, <em>English</em>, or <em>Tamil</em>. Still early in the journey,
+      already loving every room.
+    </p>
+
+    <div class="hero__actions">
+      <a href="#book" class="btn btn--primary" data-cursor="cta">
+        <span>Book me for your event</span>
+        <svg viewBox="0 0 24 24"><path d="M4 12h16m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="#stages" class="btn btn--ghost" data-cursor="link">See where I've hosted</a>
+    </div>
+
+    <div class="hero__meta">
+      <div><span class="meta__num" data-count="13">13</span><span class="meta__lbl">stages hosted<br/>2024 → 2026</span></div>
+      <div><span class="meta__num">03</span><span class="meta__lbl">languages<br/>on the mic</span></div>
+      <div><span class="meta__num">06</span><span class="meta__lbl">crowd types<br/>kids → officials</span></div>
+    </div>
+  </div>
+
+  <div class="hero__polaroids" aria-hidden="false">
+    <figure class="polaroid polaroid--1">
+      <img src="assets/images/_G8A3023.jpeg" alt="Ananth at podium — Festival Seni Universiti Malaya 2025" loading="eager"/>
+      <figcaption>FSUM · Kuala Lumpur</figcaption>
+      <span class="tape tape--top"></span>
+    </figure>
+    <figure class="polaroid polaroid--2">
+      <img src="assets/images/_MG_6428.JPG" alt="Ananth close-up with microphone" loading="lazy"/>
+      <figcaption>brain stem challenge · UM</figcaption>
+      <span class="tape tape--right"></span>
+    </figure>
+    <figure class="polaroid polaroid--3">
+      <img src="assets/images/IMG_8455.JPG" alt="Ananth presenting on stage" loading="lazy"/>
+      <figcaption>SenSAI · pitch stage</figcaption>
+      <span class="tape tape--left"></span>
+    </figure>
+  </div>
+
+  <div class="hero__scroll" aria-hidden="true">
+    <span>scroll</span>
+    <span class="hero__scroll-line"></span>
+  </div>
+</section>
+
+<!-- ============ MARQUEE ============ -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__track">
+    <span>MALAY · ENGLISH · தமிழ் ·</span>
+    <span>formal · informal · loud · quiet ·</span>
+    <span>campus fests · gala dinners · government ceremonies ·</span>
+    <span>MALAY · ENGLISH · தமிழ் ·</span>
+    <span>the room is the show ·</span>
+    <span>MALAY · ENGLISH · தமிழ் ·</span>
+    <span>formal · informal · loud · quiet ·</span>
+    <span>campus fests · gala dinners · government ceremonies ·</span>
+    <span>MALAY · ENGLISH · தமிழ் ·</span>
+    <span>the room is the show ·</span>
+  </div>
+</div>
+
+<!-- ============ ABOUT ============ -->
+<section class="about" id="about">
+  <div class="section-num" data-reveal>01 <span>— the voice</span></div>
+  <div class="about__grid">
+    <div class="about__col about__col--copy">
+      <h2 class="section-title" data-reveal>
+        Still <em>early days</em>, and honestly?<br/>
+        <span class="ink">that's the fun part.</span>
+      </h2>
+
+      <p data-reveal>
+        I'm Ananth — a Kuala Lumpur based emcee just at the start of the road.
+        A dozen or so events in, mostly around Universiti Malaya, community bodies
+        and government programmes. Not a veteran. Not pretending to be one.
+      </p>
+
+      <p data-reveal>
+        What I bring is <em>energy the room can feel</em>, three languages I can jump
+        between without an accent tripping me up, and a slightly-comedian instinct
+        that keeps things warm even when the run-sheet gets serious.
+      </p>
+
+      <p data-reveal class="about__quote">
+        <span class="quote-mark">“</span>funny — comedian feeling. and when he speaks Malay,
+        no accent.<span class="quote-mark">”</span>
+        <span class="about__quote-src">— feedback from the room</span>
+      </p>
+
+      <div class="chips" data-reveal>
+        <span class="chip"><b>BM</b> Bahasa Malaysia</span>
+        <span class="chip"><b>EN</b> English</span>
+        <span class="chip"><b>TA</b> தமிழ்</span>
+      </div>
+    </div>
+
+    <div class="about__col about__col--visual">
+      <div class="about__portrait" data-reveal>
+        <img src="assets/images/_G8A3024.jpeg" alt="Ananth on stage, hand raised" loading="lazy"/>
+        <svg class="about__frame" viewBox="0 0 400 500" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M8 12 Q 200 4, 392 10 Q 396 250, 388 490 Q 200 496, 12 488 Q 4 250, 8 12 Z" fill="none" stroke="currentColor" stroke-width="2.5"/>
+        </svg>
+        <span class="about__portrait-tag">on stage · FSUM '25</span>
+      </div>
+
+      <ul class="about__stats" data-reveal>
+        <li><b>Formal · Informal</b><span>both. read the room.</span></li>
+        <li><b>Crowds</b><span>kids → teens → students → adults → officials</span></li>
+        <li><b>Based</b><span>Kuala Lumpur, MY</span></li>
+        <li><b>Certified by</b><span>Shahril Sarapuddin</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STAGES / EXPERIENCE ============ -->
+<section class="stages" id="stages">
+  <div class="section-num" data-reveal>02 <span>— the stages</span></div>
+  <h2 class="section-title" data-reveal>
+    Rooms I've<br/>
+    <span class="ink">held together.</span>
+  </h2>
+  <p class="section-lede" data-reveal>
+    Every event, tagged by <b>language</b> and <b>register</b>. Filter to see the mix.
+  </p>
+
+  <div class="filters" data-reveal>
+    <button class="filter is-active" data-filter="all"><span>all</span></button>
+    <button class="filter" data-filter="EN"><span>English</span></button>
+    <button class="filter" data-filter="BM"><span>Malay</span></button>
+    <button class="filter" data-filter="TA"><span>Tamil</span></button>
+    <button class="filter" data-filter="formal"><span>Formal</span></button>
+    <button class="filter" data-filter="informal"><span>Informal</span></button>
+  </div>
+
+  <ol class="timeline" data-reveal>
+    <!-- 2026 -->
+    <li class="tl__year"><span>2026</span></li>
+    <li class="tl__event" data-lang="EN" data-reg="informal">
+      <span class="tl__dot"></span>
+      <div class="tl__body">
+        <div class="tl__tags"><span class="tag tag--en">EN</span><span class="tag tag--informal">informal</span></div>
+        <h3>Play Smart! Play Safe! 2026</h3>
+        <p>Online-safety programme for kids · SJKT Taman Selasih · by onlinesafetyirl</p>
+      </div>
+    </li>
+
+    <!-- 2025 -->
+    <li class="tl__year"><span>2025</span></li>
+    <li class="tl__event" data-lang="BM" data-reg="formal">
+      <span class="tl__dot"></span>
+      <div class="tl__body">
+        <div class="tl__tags"><span class="tag tag--bm">BM</span><span class="tag tag--formal">formal</span></div>
+        <h3>Festival Seni Universiti Malaya 2025</h3>
+        <p>Flagship arts festival at Universiti Malaya · main hall stage</p>
+      </div>
+    </li>
+    <li class="tl__event" data-lang="EN" data-reg="formal">
+      <span class="tl__dot"></span>
+      <div class="tl__body">
+        <div class="tl__tags"><span class="tag tag--en">EN</span><span class="tag tag--formal">formal</span></div>
+        <h3>UG iFEST 2025 · Industry Forum</h3>
+        <p>Undergraduate innovation festival · Universiti Malaya</p>
+      </div>
+    </li>
+    <li class="tl__event" data-lang="EN" data-reg="informal">
+      <span class="tl__dot"></span>
+      <div class="tl__body">
+        <div class="tl__tags"><span class="tag tag--en">EN</span><span class="tag tag--informal">informal</span></div>
+        <h3>Brain Stem Challenge 2025</h3>
+        <p>Student challenge event · UM STEM Society</p>
+      </div>
+    </li>
+    <li class="tl__event" data-lang="TA" data-reg="formal">
+      <span class="tl__dot"></span>
+      <div class="tl__body">
+        <div class="tl__tags"><span class="tag tag--ta">TA</span><span class="tag tag--formal">formal</span></div>
+        <h3>Majlis Makan Malam Deepavali 2025</h3>
+        <p>Deepavali gala dinner · MIYC Wilayah Persekutuan · hosted in Tamil</p>
+      </div>
+    </li>
+    <li class="tl__event" data-lang="BM" data-reg="informal">
+      <span class="tl__dot"></span>
+      <div class="tl__body">
+        <div class="tl__tags"><span class="tag tag--bm">BM</span><span class="tag tag--informal">informal</span></div>
+        <h3>Hari Belia Kawasan Seputeh 2025</h3>
+        <p>Youth day for Seputeh constituency · Pejabat Belia Sukan</p>
+      </div>
+    </li>
+    <li class="tl__event" data-lang="BM" data-reg="formal">
+      <span class="tl__dot"></span>
+      <div class="tl__body">
+        <div class="tl__tags"><span class="tag tag--bm">BM</span><span class="tag tag--formal">formal</span></div>
+        <h3>Majlis Ramah Mesra Aidilfitri 2025</h3>
+        <p>Aidilfitri open-house · Majlis Belia Kawasan Seputeh</p>
+      </div>
+    </li>
+    <li class="tl__event" data-lang="BM" data-reg="formal">
+      <span class="tl__dot"></span>
+      <div class="tl__body">
+        <div class="tl__tags"><span class="tag tag--bm">BM</span><span class="tag tag--formal">formal</span></div>
+        <h3>MyCorps Mission 9 · Ignition Ceremony</h3>
+        <p>Borneo 2.0 launch · Kementerian Belia &amp; Sukan (KBS)</p>
+      </div>
+    </li>
+
+    <!-- 2024 -->
+    <li class="tl__year"><span>2024</span></li>
+    <li class="tl__event" data-lang="BM" data-reg="informal">
+      <span class="tl__dot"></span>
+      <div class="tl__body">
+        <div class="tl__tags"><span class="tag tag--bm">BM</span><span class="tag tag--informal">informal</span></div>
+        <h3>Malaya E-Sports Arena 2024</h3>
+        <p>Festival Konvokesyen UM 2024 · gaming stage host</p>
+      </div>
+    </li>
+    <li class="tl__event" data-lang="EN" data-reg="formal">
+      <span class="tl__dot"></span>
+      <div class="tl__body">
+        <div class="tl__tags"><span class="tag tag--en">EN</span><span class="tag tag--formal">formal</span></div>
+        <h3>Datathon 2024</h3>
+        <p>UM Data Analytics Club · industry judges &amp; competitors</p>
+      </div>
+    </li>
+    <li class="tl__event" data-lang="EN" data-reg="informal">
+      <span class="tl__dot"></span>
+      <div class="tl__body">
+        <div class="tl__tags"><span class="tag tag--en">EN</span><span class="tag tag--informal">informal</span></div>
+        <h3>Project Celik TB 2024</h3>
+        <p>TB awareness campaign · FSKTM UM</p>
+      </div>
+    </li>
+    <li class="tl__event" data-lang="EN" data-reg="formal">
+      <span class="tl__dot"></span>
+      <div class="tl__body">
+        <div class="tl__tags"><span class="tag tag--en">EN</span><span class="tag tag--formal">formal</span></div>
+        <h3>Data Science Project Sharing Session</h3>
+        <p>UM Data Analytics Club · industry showcase</p>
+      </div>
+    </li>
+    <li class="tl__event" data-lang="BM" data-reg="formal">
+      <span class="tl__dot"></span>
+      <div class="tl__body">
+        <div class="tl__tags"><span class="tag tag--bm">BM</span><span class="tag tag--formal">formal</span></div>
+        <h3>Program Kepimpinan Altruistik 2024</h3>
+        <p>Leadership programme · MIYC</p>
+      </div>
+    </li>
+  </ol>
+
+  <!-- Key people met -->
+  <div class="keypeople" data-reveal>
+    <h3 class="section-mini">Shared the stage with</h3>
+    <ul>
+      <li><b>YB Hannah Yeoh</b><span>Minister · KBS</span></li>
+      <li><b>YB Adam Adli</b><span>Deputy Minister</span></li>
+      <li><b>YB Teresa Kok</b><span>MP Seputeh</span></li>
+      <li><b>Danesh Basil</b><span>public figure</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ CLIENTS ============ -->
+<section class="clients" id="clients">
+  <div class="clients__marquee">
+    <div class="clients__track">
+      <span>KBS</span><span class="dot">✦</span>
+      <span>MyCorps</span><span class="dot">✦</span>
+      <span>MIYC</span><span class="dot">✦</span>
+      <span>Universiti Malaya</span><span class="dot">✦</span>
+      <span>Online Safety IRL</span><span class="dot">✦</span>
+      <span>Majlis Belia Kawasan Seputeh</span><span class="dot">✦</span>
+      <span>UM Data Analytics Club</span><span class="dot">✦</span>
+      <span>UM STEM Society</span><span class="dot">✦</span>
+      <span>FSKTM UM</span><span class="dot">✦</span>
+      <!-- duplicated for seamless loop -->
+      <span>KBS</span><span class="dot">✦</span>
+      <span>MyCorps</span><span class="dot">✦</span>
+      <span>MIYC</span><span class="dot">✦</span>
+      <span>Universiti Malaya</span><span class="dot">✦</span>
+      <span>Online Safety IRL</span><span class="dot">✦</span>
+      <span>Majlis Belia Kawasan Seputeh</span><span class="dot">✦</span>
+      <span>UM Data Analytics Club</span><span class="dot">✦</span>
+      <span>UM STEM Society</span><span class="dot">✦</span>
+      <span>FSKTM UM</span><span class="dot">✦</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALLERY ============ -->
+<section class="gallery" id="gallery">
+  <div class="section-num" data-reveal>03 <span>— the wall</span></div>
+  <h2 class="section-title" data-reveal>
+    Photos taped<br/>
+    <span class="ink">to the board.</span>
+  </h2>
+  <p class="section-lede" data-reveal>
+    A little wall of moments — tap any card to open a bigger view.
+  </p>
+
+  <div class="wall">
+    <figure class="wall__item wall__item--tall" data-reveal>
+      <img src="assets/images/_G8A3023.jpeg" alt="Podium at Festival Seni Universiti Malaya" loading="lazy"/>
+      <figcaption><b>Festival Seni UM</b><span>2025 · KL</span></figcaption>
+    </figure>
+    <figure class="wall__item" data-reveal>
+      <img src="assets/images/UKK_7095.jpeg" alt="MyCorps Mission 9 event floor" loading="lazy"/>
+      <figcaption><b>MyCorps · Ignition</b><span>Borneo 2.0 · KBS</span></figcaption>
+    </figure>
+    <figure class="wall__item wall__item--wide" data-reveal>
+      <img src="assets/images/_G8A3258.jpeg" alt="UG iFEST 2025 group photo" loading="lazy"/>
+      <figcaption><b>UG iFEST '25</b><span>Industry Forum · UM</span></figcaption>
+    </figure>
+    <figure class="wall__item" data-reveal>
+      <img src="assets/images/_MG_6428.JPG" alt="Ananth speaking with microphone" loading="lazy"/>
+      <figcaption><b>Brain Stem Challenge</b><span>UM STEM Society</span></figcaption>
+    </figure>
+    <figure class="wall__item wall__item--tall" data-reveal>
+      <img src="assets/images/IMG_8455.JPG" alt="Ananth pointing at SenSAI on screen" loading="lazy"/>
+      <figcaption><b>Pitch host</b><span>SenSAI · Entrepreneurship</span></figcaption>
+    </figure>
+    <figure class="wall__item" data-reveal>
+      <img src="assets/images/UKK_7375.jpeg" alt="MyCorps team at Ignition Ceremony" loading="lazy"/>
+      <figcaption><b>MyCorps Team</b><span>Ignition Ceremony</span></figcaption>
+    </figure>
+    <figure class="wall__item wall__item--wide" data-reveal>
+      <img src="assets/images/IMG_9791.jpeg" alt="APRU SDG 2025" loading="lazy"/>
+      <figcaption><b>APRU SDG</b><span>2025 · UM</span></figcaption>
+    </figure>
+    <figure class="wall__item" data-reveal>
+      <img src="assets/images/_G8A3020.jpeg" alt="Ananth at Lai Kwan podium" loading="lazy"/>
+      <figcaption><b>Wide stage</b><span>full-hall host</span></figcaption>
+    </figure>
+    <figure class="wall__item" data-reveal>
+      <img src="assets/images/IMG_3526.jpg" alt="Traditional attire at Festival Seni UM" loading="lazy"/>
+      <figcaption><b>Festival Seni UM</b><span>traditional segment</span></figcaption>
+    </figure>
+    <figure class="wall__item wall__item--tall" data-reveal>
+      <img src="assets/images/IMG_4101.JPG" alt="Ananth mic close-up" loading="lazy"/>
+      <figcaption><b>Portrait</b><span>Brain Stem Challenge</span></figcaption>
+    </figure>
+    <figure class="wall__item" data-reveal>
+      <img src="assets/images/IMG_6727.JPG" alt="Casual host moment" loading="lazy"/>
+      <figcaption><b>Deep summit</b><span>candid</span></figcaption>
+    </figure>
+    <figure class="wall__item" data-reveal>
+      <img src="assets/images/IMG_6733.JPG" alt="Event host" loading="lazy"/>
+      <figcaption><b>Deep summit</b><span>on stage</span></figcaption>
+    </figure>
+  </div>
+
+  <!-- Reels row -->
+  <div class="reels" data-reveal>
+    <h3 class="section-mini">↳ short reels</h3>
+    <div class="reels__row">
+      <video class="reel" src="assets/videos/b38c407d-648d-4bc8-b7bb-7f610688a7ad.mp4" muted loop playsinline preload="metadata" data-cursor="play"></video>
+      <video class="reel" src="assets/videos/6bf4fd62-28fb-47df-bb2c-901e1420a85b.mp4" muted loop playsinline preload="metadata" data-cursor="play"></video>
+      <video class="reel" src="assets/videos/a49ebbec-352b-49b3-8e93-b79957e85ab8.mp4" muted loop playsinline preload="metadata" data-cursor="play"></video>
+      <video class="reel" src="assets/videos/57c7e163-e07d-4d18-9a96-db71300db92e.mp4" muted loop playsinline preload="metadata" data-cursor="play"></video>
+      <video class="reel" src="assets/videos/1986dfb14f9a4897aae723c08f701d64.mp4" muted loop playsinline preload="metadata" data-cursor="play"></video>
+    </div>
+    <span class="reels__hint">hover a reel to play · tap on mobile</span>
+  </div>
+</section>
+
+<!-- ============ VOICES / TESTIMONIALS ============ -->
+<section class="voices" id="voices">
+  <div class="section-num" data-reveal>04 <span>— the room speaks</span></div>
+  <h2 class="section-title" data-reveal>
+    What people<br/>
+    <span class="ink">say after.</span>
+  </h2>
+
+  <div class="voice-grid">
+    <blockquote class="voice v1" data-reveal>
+      <p><span class="qm">“</span>funny — comedian feeling.<span class="qm">”</span></p>
+      <cite>— repeat feedback across events</cite>
+    </blockquote>
+    <blockquote class="voice v2" data-reveal>
+      <p><span class="qm">“</span>when he speaks Malay, no accent.<span class="qm">”</span></p>
+      <cite>— audience note, government programme</cite>
+    </blockquote>
+    <blockquote class="voice v3" data-reveal>
+      <p><span class="qm">“</span>certified by Shahril Sarapuddin.<span class="qm">”</span></p>
+      <cite>— mentor endorsement</cite>
+    </blockquote>
+    <blockquote class="voice v4" data-reveal>
+      <p><span class="qm">“</span>held the crowd from kids to Yang Berhormats without breaking pace.<span class="qm">”</span></p>
+      <cite>— summary of the range</cite>
+    </blockquote>
+  </div>
+</section>
+
+<!-- ============ BOOK / CONTACT ============ -->
+<section class="book" id="book">
+  <div class="book__inner">
+    <h2 class="book__title" data-reveal>
+      Got a stage?<br/>
+      <span class="ink">let's make it a room.</span>
+    </h2>
+    <p class="book__lede" data-reveal>
+      Corporate, campus, community, government — happy to talk. Tell me the date,
+      the crowd, the language, and I'll come back with a plan.
+    </p>
+
+    <div class="book__actions" data-reveal>
+      <a href="mailto:hello@ananth.emcee?subject=Booking%20enquiry" class="btn btn--primary btn--big" data-cursor="cta">
+        <span>email me</span>
+        <svg viewBox="0 0 24 24"><path d="M4 12h16m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="https://wa.me/60000000000?text=Hi%20Ananth%2C%20I%27d%20like%20to%20check%20your%20availability%20for%20" class="btn btn--ghost btn--big" data-cursor="link">whatsapp</a>
+      <a href="https://instagram.com/" class="btn btn--ghost btn--big" data-cursor="link">instagram</a>
+    </div>
+
+    <ul class="book__facts" data-reveal>
+      <li><b>Based in</b> Kuala Lumpur, Malaysia</li>
+      <li><b>Travel</b> anywhere in MY (and open to abroad)</li>
+      <li><b>Languages</b> BM · EN · TA</li>
+      <li><b>Rate</b> friendly for early-career, ask me</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="foot">
+  <div class="foot__row">
+    <span class="foot__sig">Ananth · Emcee</span>
+    <span class="foot__year">© <span id="yr">2026</span></span>
+  </div>
+  <div class="foot__row foot__row--small">
+    <span>made with chalk and a little bit of stage fright.</span>
+    <a href="#top" data-cursor="link">back to top ↑</a>
+  </div>
+</footer>
+
+<!-- ============ LIGHTBOX ============ -->
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button class="lightbox__close" id="lbClose" aria-label="close">×</button>
+  <img id="lbImg" alt="" />
+  <div id="lbCap" class="lightbox__cap"></div>
+</div>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
