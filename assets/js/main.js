@@ -12,7 +12,7 @@
    - reels hover-play
    - footer year
    ========================================================= */
-(() => {
+const initAnanth = () => {
   'use strict';
 
   const $  = (sel, root = document) => root.querySelector(sel);
@@ -21,7 +21,6 @@
   // Enable JS-driven animation gates. If reduced-motion, skip so content shows immediately.
   if (!reduced) document.documentElement.classList.add('js-anim');
   else {
-    // ensure reveals are all visible in reduced-motion
     document.querySelectorAll('[data-reveal]').forEach(el => el.classList.add('is-in'));
   }
 
@@ -230,9 +229,15 @@
       const cy = (e.clientY / window.innerHeight - 0.5);
       polaroids.forEach((p, i) => {
         const depth = (i + 1) * 6;
-        const base = p.style.getPropertyValue('--rot') || 0;
         p.style.transform = `translate(${cx * depth}px, ${cy * depth}px) rotate(${p.dataset.rot || (i === 0 ? 4 : i === 1 ? -6 : 8)}deg)`;
       });
     });
   }
-})();
+};
+
+// Wait for render.js to populate the DOM before wiring interactions.
+if (document.querySelector('#nav')?.children.length) {
+  initAnanth();
+} else {
+  document.addEventListener('content:rendered', initAnanth, { once: true });
+}

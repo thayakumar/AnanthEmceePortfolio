@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Ananth · Admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+
+<!-- Top bar -->
+<header class="topbar">
+  <div class="topbar__left">
+    <span class="dot"></span>
+    <strong>Ananth</strong>
+    <span class="muted">· admin</span>
+  </div>
+  <div class="topbar__center" id="gitStatus">
+    <span class="badge" id="badgeBranch">branch: —</span>
+    <span class="badge" id="badgeDirty">changes: —</span>
+    <span class="badge" id="badgeSha">HEAD: —</span>
+  </div>
+  <div class="topbar__right">
+    <input type="text" id="noteInput" placeholder="short note (optional)" maxlength="60" />
+    <button id="btnPublish" class="btn btn--publish" title="save · commit · push">
+      <span class="btn__label">Confirm &amp; Publish</span>
+      <span class="btn__spinner"></span>
+    </button>
+  </div>
+</header>
+
+<!-- Layout -->
+<main class="layout">
+
+  <!-- Sidebar sections -->
+  <aside class="sidebar">
+    <nav class="sections" id="sections">
+      <button class="section-btn is-active" data-section="hero"><span>01</span> Hero</button>
+      <button class="section-btn" data-section="about"><span>02</span> About</button>
+      <button class="section-btn" data-section="stages"><span>03</span> Stages / Events</button>
+      <button class="section-btn" data-section="clients"><span>04</span> Clients</button>
+      <button class="section-btn" data-section="gallery"><span>05</span> Gallery</button>
+      <button class="section-btn" data-section="reels"><span>06</span> Reels</button>
+      <button class="section-btn" data-section="voices"><span>07</span> Voices</button>
+      <button class="section-btn" data-section="book"><span>08</span> Booking</button>
+      <button class="section-btn" data-section="nav"><span>09</span> Nav</button>
+      <button class="section-btn" data-section="marquee"><span>10</span> Marquee</button>
+      <button class="section-btn" data-section="meta"><span>11</span> Meta / SEO</button>
+    </nav>
+
+    <div class="sidebar__foot">
+      <button class="btn btn--ghost btn--sm" id="btnRefreshPreview">↻ refresh preview</button>
+      <button class="btn btn--ghost btn--sm" id="btnHistory">git log</button>
+      <div class="hint">local · 127.0.0.1</div>
+    </div>
+  </aside>
+
+  <!-- Form panel -->
+  <section class="panel">
+    <div class="panel__inner" id="form"></div>
+  </section>
+
+  <!-- Live preview -->
+  <section class="preview">
+    <div class="preview__bar">
+      <span class="preview__dot"></span><span class="preview__dot"></span><span class="preview__dot"></span>
+      <span class="preview__url">/</span>
+      <button class="preview__btn" id="btnOpenNew" title="open in new tab">↗</button>
+    </div>
+    <iframe id="previewFrame" src="/?admin=1" title="Live preview"></iframe>
+  </section>
+</main>
+
+<!-- Toast -->
+<div class="toast" id="toast" aria-live="polite"></div>
+
+<!-- History drawer -->
+<div class="drawer" id="drawer" aria-hidden="true">
+  <div class="drawer__head">
+    <strong>Recent commits</strong>
+    <button class="drawer__close" id="drawerClose" aria-label="close">×</button>
+  </div>
+  <ol class="drawer__list" id="drawerList"></ol>
+</div>
+
+<script src="admin.js"></script>
+</body>
+</html>
