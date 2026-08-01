@@ -8,6 +8,37 @@
   'use strict';
 
   const CONTENT_URL = 'assets/data/content.json';
+  const THEME_URL   = 'assets/data/theme.json';
+
+  // Apply theme tokens to :root CSS custom properties.
+  // Called at load, and can be called again by admin when user edits theme live.
+  window.applyTheme = (theme) => {
+    if (!theme) return;
+    const root = document.documentElement;
+    if (theme.colors) {
+      for (const key of Object.keys(theme.colors)) {
+        const t = theme.colors[key];
+        if (t && t.css && t.value) root.style.setProperty(t.css, t.value);
+      }
+    }
+    if (theme.sizes) {
+      for (const key of Object.keys(theme.sizes)) {
+        const t = theme.sizes[key];
+        if (!t || !t.css || t.value == null) continue;
+        const tmpl = t.cssTemplate || '{v}px';
+        const val = String(tmpl).replaceAll('{v}', String(t.value));
+        root.style.setProperty(t.css, val);
+      }
+    }
+  };
+
+  // Try loading theme first — it's small and non-blocking for the rest of the render.
+  (async () => {
+    try {
+      const r = await fetch(THEME_URL, { cache: 'no-store' });
+      if (r.ok) window.applyTheme(await r.json());
+    } catch (e) { /* theme is optional; site still works with default tokens */ }
+  })();
 
   const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c]));
 

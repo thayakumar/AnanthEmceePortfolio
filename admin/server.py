@@ -28,6 +28,7 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parent.parent
 ADMIN_DIR = Path(__file__).resolve().parent
 DATA_FILE = REPO / "assets" / "data" / "content.json"
+THEME_FILE = REPO / "assets" / "data" / "theme.json"
 BACKUP_DIR = REPO / ".backups"
 IMAGES_DIR = REPO / "assets" / "images"
 VIDEOS_DIR = REPO / "assets" / "videos"
@@ -278,6 +279,8 @@ class AdminHandler(SimpleHTTPRequestHandler):
         u = urllib.parse.urlparse(self.path)
         if u.path == "/api/data":
             return self._api_get_data()
+        if u.path == "/api/theme":
+            return self._api_get_theme()
         if u.path == "/api/status":
             return self._api_status()
         if u.path == "/api/history":
@@ -295,6 +298,8 @@ class AdminHandler(SimpleHTTPRequestHandler):
         u = urllib.parse.urlparse(self.path)
         if u.path == "/api/data":
             return self._api_save_data()
+        if u.path == "/api/theme":
+            return self._api_save_theme()
         if u.path == "/api/upload":
             return self._api_upload()
         if u.path == "/api/publish":
@@ -307,6 +312,37 @@ class AdminHandler(SimpleHTTPRequestHandler):
             return self._json(_read_json())
         except Exception as e:
             return self._json({"error": str(e)}, HTTPStatus.INTERNAL_SERVER_ERROR)
+
+    def _api_get_theme(self):
+        try:
+            if not THEME_FILE.exists():
+                return self._json({"colors": {}, "sizes": {}})
+            with THEME_FILE.open("r", encoding="utf-8") as f:
+                return self._json(json.load(f))
+        except Exception as e:
+            return self._json({"error": str(e)}, HTTPStatus.INTERNAL_SERVER_ERROR)
+
+    def _api_save_theme(self):
+        try:
+            length = int(self.headers.get("Content-Length", "0"))
+            body = self.rfile.read(length)
+            new_theme = json.loads(body.decode("utf-8"))
+        except Exception as e:
+            return self._json({"ok": False, "error": f"bad json: {e}"}, HTTPStatus.BAD_REQUEST)
+        try:
+            # Snapshot theme too
+            if THEME_FILE.exists():
+                BACKUP_DIR.mkdir(exist_ok=True)
+                stamp = datetime.now().strftime("%Y%m%d-%H%M%S")
+                shutil.copy2(THEME_FILE, BACKUP_DIR / f"theme-{stamp}.json")
+            THEME_FILE.parent.mkdir(parents=True, exist_ok=True)
+            tmp = THEME_FILE.with_suffix(".json.tmp")
+            with tmp.open("w", encoding="utf-8") as f:
+                json.dump(new_theme, f, ensure_ascii=False, indent=2)
+            tmp.replace(THEME_FILE)
+            return self._json({"ok": True, "saved_at": time.time()})
+        except Exception as e:
+            return self._json({"ok": False, "error": str(e)}, HTTPStatus.INTERNAL_SERVER_ERROR)
 
     def _api_status(self):
         _, branch, _ = _shell(["git", "rev-parse", "--abbrev-ref", "HEAD"])

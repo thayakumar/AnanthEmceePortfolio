@@ -4,7 +4,11 @@
    lettering, taped polaroids, vibrant red/yellow/pink accents.
    ========================================================= */
 
-/* -------- TOKENS -------- */
+/* -------- TOKENS --------
+   These are overridable from assets/data/theme.json via render.js.
+   To change colors or key type sizes site-wide, edit theme.json from
+   the admin editor's Theme section — no CSS edits needed.
+*/
 :root {
   --bg-0: #0e1010;
   --bg-1: #14201c;                 /* slate green board */
@@ -23,6 +27,22 @@
   --font-serif: "Instrument Serif", "Playfair Display", serif;
   --font-body: "Space Grotesk", "Inter", system-ui, sans-serif;
   --font-tamil: "Noto Sans Tamil", sans-serif;
+
+  /* Type-size tokens — theme.json overrides these to change size sitewide */
+  --size-hero-title:    clamp(72px, 12vw, 180px);
+  --size-hero-eyebrow:  22px;
+  --size-hero-sub:      clamp(20px, 2.6vw, 32px);
+  --size-hero-blurb:    clamp(15px, 1.3vw, 18px);
+  --size-hero-meta-num: clamp(56px, 6.5vw, 96px);
+  --size-hero-meta-lbl: clamp(20px, 1.9vw, 26px);
+  --size-section-title: clamp(48px, 8vw, 120px);
+  --size-section-lede:  clamp(15px, 1.2vw, 18px);
+  --size-about-body:    clamp(17px, 1.4vw, 20px);
+  --size-about-stats:   clamp(22px, 1.9vw, 28px);
+  --size-event-title:   clamp(22px, 2.2vw, 28px);
+  --size-book-title:    clamp(60px, 12vw, 180px);
+  --size-book-lede:     clamp(18px, 1.6vw, 24px);
+  --size-quote:         clamp(20px, 1.8vw, 26px);
 
   --shadow-hard: 0 20px 40px -20px rgba(0, 0, 0, .8);
   --tape: rgba(255, 236, 179, 0.45);
@@ -295,7 +315,7 @@ ol, ul { list-style: none; margin: 0; padding: 0; }
   align-items: center;
   gap: 10px;
   font-family: var(--font-hand);
-  font-size: 22px;
+  font-size: var(--size-hero-eyebrow);
   color: var(--chalk-dim);
   padding: 6px 16px;
   border: 1px dashed var(--chalk-faint);
@@ -312,7 +332,7 @@ ol, ul { list-style: none; margin: 0; padding: 0; }
 
 .hero__title {
   font-family: var(--font-display);
-  font-size: clamp(72px, 12vw, 180px);
+  font-size: var(--size-hero-title);
   line-height: 0.86;
   margin: 0;
   letter-spacing: -0.02em;
@@ -349,7 +369,7 @@ ol, ul { list-style: none; margin: 0; padding: 0; }
   margin: 32px 0 22px;
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: clamp(20px, 2.6vw, 32px);
+  font-size: var(--size-hero-sub);
   color: var(--chalk);
   display: flex;
   flex-wrap: wrap;
@@ -384,7 +404,7 @@ ol, ul { list-style: none; margin: 0; padding: 0; }
 
 .hero__blurb {
   max-width: 620px;
-  font-size: clamp(15px, 1.3vw, 18px);
+  font-size: var(--size-hero-blurb);
   line-height: 1.65;
   color: var(--chalk-dim);
   margin: 0 0 36px;
@@ -456,13 +476,13 @@ ol, ul { list-style: none; margin: 0; padding: 0; }
 .hero__meta > div { display: flex; align-items: flex-start; gap: 12px; }
 .meta__num {
   font-family: var(--font-display);
-  font-size: clamp(48px, 5.2vw, 72px);
+  font-size: var(--size-hero-meta-num);
   color: var(--yellow);
   line-height: 1;
 }
 .meta__lbl {
   font-family: var(--font-hand);
-  font-size: clamp(18px, 1.6vw, 22px);
+  font-size: var(--size-hero-meta-lbl);
   color: var(--chalk);
   line-height: 1.25;
   opacity: 0.85;
@@ -585,7 +605,7 @@ ol, ul { list-style: none; margin: 0; padding: 0; }
 .section-num span { color: var(--chalk-dim); }
 .section-title {
   font-family: var(--font-display);
-  font-size: clamp(48px, 8vw, 120px);
+  font-size: var(--size-section-title);
   line-height: .9;
   margin: 0 0 32px;
   letter-spacing: -0.02em;
@@ -605,7 +625,7 @@ ol, ul { list-style: none; margin: 0; padding: 0; }
 }
 .section-lede {
   max-width: 620px;
-  font-size: clamp(15px, 1.2vw, 18px);
+  font-size: var(--size-section-lede);
   color: var(--chalk-dim);
   margin-bottom: 40px;
   line-height: 1.6;
@@ -645,7 +665,7 @@ ol, ul { list-style: none; margin: 0; padding: 0; }
 @media (max-width: 900px) { .about__grid { grid-template-columns: 1fr; gap: 60px; } }
 
 .about__col--copy p {
-  font-size: clamp(17px, 1.4vw, 20px);
+  font-size: var(--size-about-body);
   line-height: 1.65;
   color: var(--chalk);
   margin: 0 0 20px;
@@ -752,13 +772,13 @@ ol, ul { list-style: none; margin: 0; padding: 0; }
 }
 .about__stats b {
   font-family: var(--font-marker);
-  font-size: clamp(22px, 1.9vw, 28px);
+  font-size: var(--size-about-stats);
   color: var(--chalk);
   letter-spacing: 0.01em;
 }
 .about__stats span {
   font-family: var(--font-hand);
-  font-size: clamp(22px, 1.9vw, 28px);
+  font-size: var(--size-about-stats);
   color: var(--yellow);
   text-align: right;
   line-height: 1.2;
@@ -856,7 +876,7 @@ ol, ul { list-style: none; margin: 0; padding: 0; }
 
 .tl__event h3 {
   font-family: var(--font-serif);
-  font-size: clamp(22px, 2.2vw, 28px);
+  font-size: var(--size-event-title);
   margin: 0 0 4px;
   color: var(--chalk);
   line-height: 1.15;
@@ -1046,7 +1066,7 @@ ol, ul { list-style: none; margin: 0; padding: 0; }
 .voice p {
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: clamp(20px, 1.8vw, 26px);
+  font-size: var(--size-quote);
   line-height: 1.35;
   color: var(--chalk);
   margin: 0 0 20px;
@@ -1081,7 +1101,7 @@ ol, ul { list-style: none; margin: 0; padding: 0; }
 .book__inner { max-width: 900px; margin: 0 auto; }
 .book__title {
   font-family: var(--font-display);
-  font-size: clamp(60px, 12vw, 180px);
+  font-size: var(--size-book-title);
   line-height: .9;
   margin: 0 0 32px;
   letter-spacing: -0.02em;
@@ -1095,7 +1115,7 @@ ol, ul { list-style: none; margin: 0; padding: 0; }
 .book__lede {
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: clamp(18px, 1.6vw, 24px);
+  font-size: var(--size-book-lede);
   color: var(--chalk-dim);
   margin: 0 auto 40px;
   max-width: 640px;

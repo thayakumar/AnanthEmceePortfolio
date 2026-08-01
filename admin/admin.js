@@ -14,6 +14,7 @@
 
   const state = {
     data: null,          // canonical content.json
+    theme: null,         // theme.json
     section: 'hero',
     uploadedThisSession: [], // relative paths of new files this session
     dirty: false,
@@ -41,6 +42,11 @@
         method: 'POST', headers: {'Content-Type':'application/json'},
         body: JSON.stringify({ data, uploaded, note })
       });
+      return r.json();
+    },
+    async getTheme() { const r = await fetch('/api/theme', { cache: 'no-store' }); return r.json(); },
+    async saveTheme(theme) {
+      const r = await fetch('/api/theme', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify(theme) });
       return r.json();
     },
   };
@@ -449,6 +455,92 @@
         ${fld.text('Footer tag line', 'meta.footer_tag')}
       `;
     },
+
+    // ---------- THEME (colors + sizes) ----------
+    theme() {
+      if (!state.theme || !state.theme.colors || !state.theme.sizes) {
+        return `<div class="empty">Loading theme…</div>`;
+      }
+      const colorEntries = Object.entries(state.theme.colors);
+      const sizeEntries  = Object.entries(state.theme.sizes);
+
+      const colorFields = colorEntries.map(([key, t]) => `
+        <div class="theme-row">
+          <label class="theme-row__lbl" for="col-${escapeAttr(key)}">
+            <strong>${escape(t.label || key)}</strong>
+            <span class="muted">${escape(t.css || '')}</span>
+          </label>
+          <div class="theme-row__control theme-row__control--color">
+            <input class="theme-color" type="color" id="col-${escapeAttr(key)}" data-theme-color="${escapeAttr(key)}" value="${escapeAttr(t.value || '#000000')}"/>
+            <input class="input theme-color-hex" type="text" data-theme-color-hex="${escapeAttr(key)}" value="${escapeAttr(t.value || '')}" placeholder="#000000" />
+          </div>
+        </div>
+      `).join('');
+
+      const sizeFields = sizeEntries.map(([key, t]) => `
+        <div class="theme-row">
+          <label class="theme-row__lbl" for="sz-${escapeAttr(key)}">
+            <strong>${escape(t.label || key)}</strong>
+            <span class="muted">${escape(t.css || '')} · min ${escape(t.min || 0)}px</span>
+          </label>
+          <div class="theme-row__control theme-row__control--size">
+            <input class="input theme-size" type="number" id="sz-${escapeAttr(key)}" data-theme-size="${escapeAttr(key)}" value="${escape(t.value)}" min="${escape(t.min || 8)}" step="1" />
+            <span class="theme-unit">px</span>
+          </div>
+        </div>
+      `).join('');
+
+      return `
+        <div class="section-head">
+          <h2>Theme</h2>
+          <span class="sub">colors + type sizes for the whole site · live preview</span>
+        </div>
+
+        <div class="theme-actions">
+          <button class="btn btn--ghost btn--sm" id="btnThemeReset">↺ Reset to defaults</button>
+          <span class="hint">changes apply live to the preview · Confirm &amp; Publish to commit</span>
+        </div>
+
+        <h3 class="theme-heading">Palette</h3>
+        <div class="theme-list">${colorFields}</div>
+
+        <hr style="margin: 32px 0; border: 0; border-top: 1px solid var(--line);"/>
+
+        <h3 class="theme-heading">Type sizes (desktop max)</h3>
+        <div class="field__hint" style="margin-bottom: 16px">These are the maximum sizes at wide screens. Fluid clamp() rules automatically scale down for tablets and phones — you don't need to worry about mobile.</div>
+        <div class="theme-list">${sizeFields}</div>
+      `;
+    },
+  };
+
+  // Default theme snapshot so "Reset" works even after saves
+  const DEFAULT_THEME = {
+    colors: {
+      bg:            { value: "#0e1010", label: "Page background",   css: "--bg-0" },
+      board:         { value: "#14201c", label: "Slate board tint",  css: "--bg-1" },
+      chalk:         { value: "#f4ede2", label: "Chalk / body text", css: "--chalk" },
+      red:           { value: "#ff3a20", label: "Accent red",        css: "--red" },
+      red_deep:      { value: "#cc2a15", label: "Red hover",         css: "--red-deep" },
+      yellow:        { value: "#ffd23f", label: "Accent yellow",     css: "--yellow" },
+      pink:          { value: "#ff5e9a", label: "Accent pink",       css: "--pink" },
+      mint:          { value: "#7be0c4", label: "Accent mint",       css: "--mint" }
+    },
+    sizes: {
+      hero_title:    { value: 180, label: "Hero big title (ANANTH)",  css: "--size-hero-title",    min: 72,  cssTemplate: "clamp(72px, 12vw, {v}px)" },
+      hero_eyebrow:  { value: 22,  label: "Hero pill (small tag)",    css: "--size-hero-eyebrow",  min: 12,  cssTemplate: "{v}px" },
+      hero_sub:      { value: 32,  label: "Hero italic tagline",      css: "--size-hero-sub",      min: 16,  cssTemplate: "clamp(20px, 2.6vw, {v}px)" },
+      hero_blurb:    { value: 18,  label: "Hero body paragraph",      css: "--size-hero-blurb",    min: 12,  cssTemplate: "clamp(15px, 1.3vw, {v}px)" },
+      hero_meta_num: { value: 96,  label: "Hero stat numbers",        css: "--size-hero-meta-num", min: 40,  cssTemplate: "clamp(56px, 6.5vw, {v}px)" },
+      hero_meta_lbl: { value: 26,  label: "Hero stat labels",         css: "--size-hero-meta-lbl", min: 14,  cssTemplate: "clamp(20px, 1.9vw, {v}px)" },
+      section_title: { value: 120, label: "Section titles",           css: "--size-section-title", min: 40,  cssTemplate: "clamp(48px, 8vw, {v}px)" },
+      section_lede:  { value: 18,  label: "Section lede text",        css: "--size-section-lede",  min: 12,  cssTemplate: "clamp(15px, 1.2vw, {v}px)" },
+      about_body:    { value: 20,  label: "About paragraphs",         css: "--size-about-body",    min: 14,  cssTemplate: "clamp(17px, 1.4vw, {v}px)" },
+      about_stats:   { value: 28,  label: "About sidebar stats",      css: "--size-about-stats",   min: 16,  cssTemplate: "clamp(22px, 1.9vw, {v}px)" },
+      event_title:   { value: 28,  label: "Timeline event titles",    css: "--size-event-title",   min: 16,  cssTemplate: "clamp(22px, 2.2vw, {v}px)" },
+      book_title:    { value: 180, label: "Booking big title",        css: "--size-book-title",    min: 40,  cssTemplate: "clamp(60px, 12vw, {v}px)" },
+      book_lede:     { value: 24,  label: "Booking lede",             css: "--size-book-lede",     min: 14,  cssTemplate: "clamp(18px, 1.6vw, {v}px)" },
+      quote:         { value: 26,  label: "Quote / testimonial text", css: "--size-quote",         min: 14,  cssTemplate: "clamp(20px, 1.8vw, {v}px)" }
+    }
   };
 
   // ============================================================
@@ -549,7 +641,68 @@
     const sec = state.section;
     const fn = sections[sec];
     $('#form').innerHTML = fn ? fn() : `<div class="empty">unknown section: ${sec}</div>`;
-    wireForm();
+    if (sec === 'theme') wireThemeForm();
+    else wireForm();
+  }
+
+  // Apply the theme to the preview iframe live (calls its applyTheme fn)
+  function applyThemeToPreview() {
+    const frame = $('#previewFrame');
+    if (!frame || !frame.contentWindow) return;
+    try {
+      if (typeof frame.contentWindow.applyTheme === 'function') {
+        frame.contentWindow.applyTheme(state.theme);
+      }
+    } catch (e) { /* cross-origin or not loaded yet — ignore */ }
+  }
+
+  // Wire the theme section's color pickers + size inputs
+  function wireThemeForm() {
+    // Color picker <-> hex text field sync
+    $$('#form [data-theme-color]').forEach(inp => {
+      const key = inp.dataset.themeColor;
+      inp.addEventListener('input', () => {
+        state.theme.colors[key].value = inp.value;
+        const hex = $(`[data-theme-color-hex="${key}"]`);
+        if (hex) hex.value = inp.value;
+        state.dirty = true;
+        applyThemeToPreview();
+      });
+    });
+    $$('#form [data-theme-color-hex]').forEach(hex => {
+      const key = hex.dataset.themeColorHex;
+      hex.addEventListener('input', () => {
+        const v = hex.value.trim();
+        if (!/^#[0-9a-fA-F]{3,8}$/.test(v)) return;
+        state.theme.colors[key].value = v;
+        const picker = $(`[data-theme-color="${key}"]`);
+        if (picker) picker.value = v.length === 4
+          ? '#' + v.slice(1).split('').map(c => c+c).join('')  // #rgb -> #rrggbb
+          : v.slice(0, 7);
+        state.dirty = true;
+        applyThemeToPreview();
+      });
+    });
+    // Size inputs
+    $$('#form [data-theme-size]').forEach(inp => {
+      const key = inp.dataset.themeSize;
+      inp.addEventListener('input', () => {
+        const v = parseInt(inp.value, 10);
+        if (!Number.isFinite(v) || v < 0) return;
+        state.theme.sizes[key].value = v;
+        state.dirty = true;
+        applyThemeToPreview();
+      });
+    });
+    // Reset to defaults
+    const resetBtn = $('#btnThemeReset');
+    if (resetBtn) resetBtn.addEventListener('click', () => {
+      if (!confirm('Reset the theme (colors + sizes) to defaults? Your content isn\'t affected.')) return;
+      state.theme = JSON.parse(JSON.stringify(DEFAULT_THEME));
+      state.dirty = true;
+      renderSection();
+      applyThemeToPreview();
+    });
   }
 
   // Bind inputs & buttons in the form to state + reorder + upload
@@ -714,9 +867,13 @@
     const note = $('#noteInput').value.trim();
 
     try {
-      // Save first (writes content.json)
-      const saveRes = await api.saveData(state.data);
+      // Save content.json + theme.json in parallel
+      const [saveRes, themeRes] = await Promise.all([
+        api.saveData(state.data),
+        state.theme ? api.saveTheme(state.theme) : Promise.resolve({ ok: true }),
+      ]);
       if (!saveRes.ok) { toast(`save failed: ${saveRes.error||'unknown'}`, 'err', 5000); return; }
+      if (!themeRes.ok) { toast(`theme save failed: ${themeRes.error||'unknown'}`, 'warn', 5000); }
 
       // Then publish (commits + pushes)
       const res = await api.publish(state.data, state.uploadedThisSession, note);
@@ -792,11 +949,18 @@
   //   Init
   // ============================================================
   async function init() {
-    const data = await api.getData();
+    const [data, theme] = await Promise.all([api.getData(), api.getTheme()]);
     if (data.error) { toast(`Failed to load: ${data.error}`, 'err', 6000); return; }
     state.data = data;
+    // If theme is empty (fresh install), start with defaults
+    state.theme = (theme && theme.colors && Object.keys(theme.colors).length)
+      ? theme
+      : JSON.parse(JSON.stringify(DEFAULT_THEME));
     renderSection();
     refreshStatus();
+    // Push initial theme into preview once the iframe has loaded
+    const frame = $('#previewFrame');
+    if (frame) frame.addEventListener('load', applyThemeToPreview);
 
     // Section nav
     $$('.section-btn').forEach(btn => {

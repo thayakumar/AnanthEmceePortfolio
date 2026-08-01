@@ -31,7 +31,8 @@
     "meta_stats": [
       { "num": "13", "label": "stages hosted\n2024 → 2026" },
       { "num": "03", "label": "languages\non the mic" },
-      { "num": "06", "label": "crowd types\nkids → officials" }
+      { "num": "06", "label": "crowd types\nkids → officials" },
+      { "num": "06", "label": "event types\ngala · civic · campus · kids" }
     ],
     "polaroids": [
       { "image": "assets/images/_G8A3023.jpeg", "alt": "Ananth at podium — Festival Seni Universiti Malaya 2025", "caption": "FSUM · Kuala Lumpur", "tape": "top" },
