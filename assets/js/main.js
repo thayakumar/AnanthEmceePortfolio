@@ -15,6 +15,10 @@
 const initAnanth = () => {
   'use strict';
 
+  // guard against double-init (the safety-net setTimeout may race with content:rendered)
+  if (document.documentElement.classList.contains('ananth-inited')) return;
+  document.documentElement.classList.add('ananth-inited');
+
   const $  = (sel, root = document) => root.querySelector(sel);
   const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -25,11 +29,12 @@ const initAnanth = () => {
   }
 
   /* ---------------- loader ---------------- */
-  window.addEventListener('load', () => {
-    const l = $('#loader');
-    if (!l) return;
-    setTimeout(() => l.classList.add('is-done'), reduced ? 200 : 2400);
-  });
+  // Dismiss as soon as init runs (content is already in the DOM by now).
+  // Don't wait for window.load — it may have already fired.
+  const dismissLoader = () => {
+    const l = $('#loader'); if (l) l.classList.add('is-done');
+  };
+  setTimeout(dismissLoader, reduced ? 100 : 1200);
 
   /* ---------------- footer year ---------------- */
   const yr = $('#yr'); if (yr) yr.textContent = new Date().getFullYear();
@@ -236,8 +241,22 @@ const initAnanth = () => {
 };
 
 // Wait for render.js to populate the DOM before wiring interactions.
+// Unconditional loader dismissal safety net — runs even if initAnanth never fires
+// (e.g. render.js failed to fetch content.json). No matter what, the loader clears
+// within 4s so the page is never permanently stuck on "tuning the mic…".
+setTimeout(() => {
+  const l = document.getElementById('loader');
+  if (l) l.classList.add('is-done');
+}, 4000);
+
 if (document.querySelector('#nav')?.children.length) {
   initAnanth();
 } else {
   document.addEventListener('content:rendered', initAnanth, { once: true });
+  // If render.js takes too long or errors, still boot interactions in a degraded mode
+  setTimeout(() => {
+    if (!document.documentElement.classList.contains('ananth-inited')) {
+      initAnanth();
+    }
+  }, 3000);
 }

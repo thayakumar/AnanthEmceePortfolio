@@ -20,9 +20,18 @@
   let data;
   try {
     const res = await fetch(CONTENT_URL, { cache: 'no-store' });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
     data = await res.json();
   } catch (e) {
-    console.error('content.json failed to load', e);
+    console.error('[render] content.json failed to load — booting site in degraded mode:', e);
+    // Still fire the event so main.js can dismiss the loader and wire up whatever it can
+    document.dispatchEvent(new CustomEvent('content:rendered', { detail: { error: e } }));
+    // Also surface the error visibly so it isn't silent
+    const loader = document.getElementById('loader');
+    if (loader) {
+      const sub = loader.querySelector('.loader__sub');
+      if (sub) sub.textContent = 'content.json failed — check network / path';
+    }
     return;
   }
 
