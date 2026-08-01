@@ -72,6 +72,7 @@
       { "b": "Formal · Informal", "span": "both. read the room." },
       { "b": "Crowds",            "span": "kids → teens → students → adults → officials" },
       { "b": "Based",             "span": "Kuala Lumpur, MY" },
+      { "b": "Rate",              "span": "friendly for early-career, ask me" },
       { "b": "Certified by",      "span": "Shahril Sarapuddin" }
     ]
   },
@@ -161,11 +162,6 @@
       { "label": "whatsapp",  "href": "https://wa.me/60000000000?text=Hi%20Ananth%2C",                    "type": "ghost"   },
       { "label": "instagram", "href": "https://instagram.com/",                                            "type": "ghost"   }
     ],
-    "facts": [
-      { "b": "Based in",  "text": "Kuala Lumpur, Malaysia" },
-      { "b": "Travel",    "text": "anywhere in MY (and open to abroad)" },
-      { "b": "Languages", "text": "BM · EN · TA" },
-      { "b": "Rate",      "text": "friendly for early-career, ask me" }
-    ]
+    "facts": []
   }
 }

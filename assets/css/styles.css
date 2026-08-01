@@ -456,15 +456,16 @@ ol, ul { list-style: none; margin: 0; padding: 0; }
 .hero__meta > div { display: flex; align-items: flex-start; gap: 12px; }
 .meta__num {
   font-family: var(--font-display);
-  font-size: 44px;
+  font-size: clamp(48px, 5.2vw, 72px);
   color: var(--yellow);
   line-height: 1;
 }
 .meta__lbl {
   font-family: var(--font-hand);
-  font-size: 16px;
-  color: var(--chalk-dim);
-  line-height: 1.2;
+  font-size: clamp(18px, 1.6vw, 22px);
+  color: var(--chalk);
+  line-height: 1.25;
+  opacity: 0.85;
 }
 
 /* Hero polaroids column */
@@ -741,24 +742,26 @@ ol, ul { list-style: none; margin: 0; padding: 0; }
 }
 .about__stats {
   display: grid;
-  gap: 14px;
+  gap: 16px;
 }
 .about__stats li {
   display: flex; align-items: baseline; justify-content: space-between;
-  padding: 12px 0;
+  padding: 16px 0;
   border-bottom: 1px dashed var(--chalk-faint);
   gap: 20px;
 }
 .about__stats b {
   font-family: var(--font-marker);
-  font-size: 20px;
+  font-size: clamp(22px, 1.9vw, 28px);
   color: var(--chalk);
+  letter-spacing: 0.01em;
 }
 .about__stats span {
   font-family: var(--font-hand);
-  font-size: 20px;
+  font-size: clamp(22px, 1.9vw, 28px);
   color: var(--yellow);
   text-align: right;
+  line-height: 1.2;
 }
 
 /* -------- STAGES / TIMELINE -------- */
@@ -1113,6 +1116,8 @@ ol, ul { list-style: none; margin: 0; padding: 0; }
   border-top: 1px dashed var(--chalk-faint);
   text-align: left;
 }
+/* Hide the facts row entirely if it has no items */
+.book__facts:empty { display: none; padding: 0; border: 0; }
 .book__facts li {
   font-family: var(--font-hand);
   font-size: 20px;
@@ -1269,9 +1274,9 @@ ol, ul { list-style: none; margin: 0; padding: 0; }
 
   /* Meta stats stack 3-in-a-row using less spacing */
   .hero__meta { gap: 20px; padding-top: 18px; }
-  .hero__meta > div { flex: 1 1 auto; gap: 8px; }
-  .meta__num { font-size: 34px; }
-  .meta__lbl { font-size: 14px; }
+  .hero__meta > div { flex: 1 1 auto; gap: 10px; }
+  .meta__num { font-size: 44px; }
+  .meta__lbl { font-size: 16px; }
 
   /* Marquee — smaller type */
   .marquee { padding: 16px 0; }
@@ -1287,8 +1292,8 @@ ol, ul { list-style: none; margin: 0; padding: 0; }
   .about__col--copy p { font-size: 16px; }
   .about__quote { padding: 20px 20px !important; font-size: 20px !important; }
   .about__portrait { max-width: 100%; margin-bottom: 32px; }
-  .about__stats b { font-size: 17px; }
-  .about__stats span { font-size: 17px; }
+  .about__stats b { font-size: 20px; }
+  .about__stats span { font-size: 20px; }
 
   /* Stages / timeline */
   .filters { gap: 8px; }
