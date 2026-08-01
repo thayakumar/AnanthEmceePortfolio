@@ -290,7 +290,8 @@ ol, ul { list-style: none; margin: 0; padding: 0; }
 .hero__stage { position: relative; z-index: 2; }
 
 .hero__eyebrow {
-  display: inline-flex;
+  display: flex;
+  width: fit-content;             /* keep the pill tight, but own its own line */
   align-items: center;
   gap: 10px;
   font-family: var(--font-hand);
@@ -317,7 +318,9 @@ ol, ul { list-style: none; margin: 0; padding: 0; }
   letter-spacing: -0.02em;
   color: var(--chalk);
   position: relative;
-  display: inline-block;
+  display: block;                 /* own line, no side-by-side with eyebrow */
+  width: fit-content;             /* keep the ::after underline stroke tight */
+  max-width: 100%;
   text-shadow: 2px 2px 0 rgba(0,0,0,0.4);
 }
 .hero__title .letter {
