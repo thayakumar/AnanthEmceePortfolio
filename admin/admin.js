@@ -858,6 +858,32 @@
   }
 
   // ============================================================
+  //   Save draft (local only — no commit, no push)
+  // ============================================================
+  async function saveDraft() {
+    const btn = $('#btnSaveDraft');
+    btn.disabled = true;
+    const prev = btn.textContent;
+    btn.textContent = 'saving…';
+    try {
+      const [saveRes, themeRes] = await Promise.all([
+        api.saveData(state.data),
+        state.theme ? api.saveTheme(state.theme) : Promise.resolve({ ok: true }),
+      ]);
+      if (!saveRes.ok) { toast(`save failed: ${saveRes.error||'unknown'}`, 'err', 5000); return; }
+      if (!themeRes.ok) { toast(`theme save failed: ${themeRes.error||'unknown'}`, 'warn', 5000); }
+      refreshPreview();
+      refreshStatus();
+      toast('draft saved · preview refreshed', 'ok', 2500);
+    } catch (e) {
+      toast(`save error: ${e.message||e}`, 'err', 5000);
+    } finally {
+      btn.disabled = false;
+      btn.textContent = prev;
+    }
+  }
+
+  // ============================================================
   //   Save + Publish
   // ============================================================
   async function publish() {
@@ -975,6 +1001,7 @@
 
     // Global buttons
     $('#btnPublish').addEventListener('click', publish);
+    $('#btnSaveDraft').addEventListener('click', saveDraft);
     $('#btnRefreshPreview').addEventListener('click', refreshPreview);
     $('#btnHistory').addEventListener('click', openHistory);
     $('#drawerClose').addEventListener('click', () => $('#drawer').classList.remove('is-open'));

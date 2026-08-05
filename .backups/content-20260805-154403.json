@@ -1,0 +1,462 @@
+{
+  "meta": {
+    "site_title": "Ananth — Emcee. Host. Storyteller.",
+    "description": "Ananth is a multilingual emcee (Bahasa Malaysia · English · Tamil) hosting stages across Malaysia — from campus fests and gala dinners to government ceremonies.",
+    "footer_signature": "Ananth · Emcee",
+    "footer_tag": "made with chalk and a little bit of stage fright."
+  },
+  "nav": {
+    "brand_short": "A.",
+    "brand_word": "Ananth",
+    "links": [
+      {
+        "num": "01",
+        "label": "About",
+        "href": "#about"
+      },
+      {
+        "num": "02",
+        "label": "Stages",
+        "href": "#stages"
+      },
+      {
+        "num": "03",
+        "label": "Gallery",
+        "href": "#gallery"
+      },
+      {
+        "num": "04",
+        "label": "Voices",
+        "href": "#voices"
+      }
+    ],
+    "cta": {
+      "label": "Book →",
+      "href": "#book"
+    }
+  },
+  "hero": {
+    "eyebrow": "Emcee · Host · Storyteller ",
+    "name": "ANANTH",
+    "lead": "i hold the mic and",
+    "rotator": [
+      {
+        "lang": "en",
+        "text": "carry the room."
+      },
+      {
+        "lang": "bm",
+        "text": "hidupkan suasana."
+      },
+      {
+        "lang": "ta",
+        "text": "அரங்கை உயிர்ப்பிப்பேன்."
+      }
+    ],
+    "blurb": "",
+    "primary_cta": {
+      "label": "Book me for your event",
+      "href": "#book"
+    },
+    "secondary_cta": {
+      "label": "See where I've hosted",
+      "href": "#stages"
+    },
+    "meta_stats": [
+      {
+        "num": "13",
+        "label": "stages hosted"
+      },
+      {
+        "num": "03",
+        "label": "languages\non the mic"
+      },
+      {
+        "num": "06",
+        "label": "crowd types"
+      },
+      {
+        "num": "06",
+        "label": "event types"
+      }
+    ],
+    "polaroids": [
+      {
+        "image": "assets/images/_G8A3023.jpeg",
+        "alt": "",
+        "caption": "UM iFEST",
+        "tape": "top"
+      },
+      {
+        "image": "assets/images/6f48561e-a2b0-4bc2-8915-3fdfcecf6b9b.jpg",
+        "alt": "",
+        "caption": "Projek Celik TB",
+        "tape": "right"
+      },
+      {
+        "image": "assets/images/IMG_8455.JPG",
+        "alt": "",
+        "caption": "Hong Kong Pitching Competition",
+        "tape": "left"
+      }
+    ]
+  },
+  "marquee": [
+    "MALAY · ENGLISH · தமிழ் ·",
+    "formal · informal · loud · quiet ·",
+    "campus fests · gala dinners · government ceremonies ·",
+    "the room is the show ·"
+  ],
+  "about": {
+    "num": "01",
+    "num_label": "the voice",
+    "title_line1": "Still *early days*, and honestly?",
+    "title_line2_ink": "that's the fun part.",
+    "paragraphs": [
+      "I'm Ananth — a Kuala Lumpur based emcee just at the start of the road. A dozen or so events in, mostly around Universiti Malaya, community bodies and government programmes. Not a veteran. Not pretending to be one.",
+      "What I bring is *energy the room can feel*, three languages I can jump between, and a slightly-comedian instinct that keeps things warm even when the run-sheet gets serious."
+    ],
+    "quote": {
+      "text": "Held the crowd from kids to Yang Berhormats without breaking pace !",
+      "source": "My Proudest Achievement"
+    },
+    "chips": [
+      {
+        "code": "BM",
+        "label": "Bahasa Malaysia"
+      },
+      {
+        "code": "EN",
+        "label": "English"
+      },
+      {
+        "code": "TA",
+        "label": "தமிழ்"
+      }
+    ],
+    "portrait": {
+      "image": "assets/images/IMG_3526.jpg",
+      "alt": "Ananth on stage, hand raised",
+      "tag": "on stage · FSUM '25"
+    },
+    "stats": [
+      {
+        "b": "Emcee Mode",
+        "span": "Formal · Informal"
+      },
+      {
+        "b": "Crowds",
+        "span": "Kids/Teens/Students/Adults/Officials"
+      },
+      {
+        "b": "Based",
+        "span": "Kuala Lumpur, Petaling Jaya"
+      },
+      {
+        "b": "Rate",
+        "span": "Friendly for early-career, ask me"
+      },
+      {
+        "b": "Certified by",
+        "span": "Shahril Sarapuddin"
+      },
+      {
+        "b": "Event Types",
+        "span": "Online Events/School Events/Campus Programs/Dinner/Competition/Commentary/Host and many more!"
+      }
+    ]
+  },
+  "stages": {
+    "num": "02",
+    "num_label": "the stages",
+    "title_line1": "Rooms I've",
+    "title_line2_ink": "held together.",
+    "lede": "Every event, tagged by <b>language</b> and <b>register</b>. Filter to see the mix.",
+    "events": [
+      {
+        "year": "2026",
+        "title": "Play Smart! Play Safe! 2026",
+        "desc": "Online-safety programme for kids · SJKT Taman Selasih · by onlinesafetyirl",
+        "lang": "EN",
+        "register": "informal"
+      },
+      {
+        "year": "2025",
+        "title": "Festival Seni Universiti Malaya 2025",
+        "desc": "Flagship arts festival at Universiti Malaya · main hall stage",
+        "lang": "BM",
+        "register": "formal"
+      },
+      {
+        "year": "2025",
+        "title": "UG iFEST 2025 · Industry Forum",
+        "desc": "Undergraduate innovation festival · Universiti Malaya",
+        "lang": "EN",
+        "register": "formal"
+      },
+      {
+        "year": "2025",
+        "title": "Brain Stem Challenge 2025",
+        "desc": "Student challenge event · UM STEM Society",
+        "lang": "EN",
+        "register": "informal"
+      },
+      {
+        "year": "2025",
+        "title": "Majlis Makan Malam Deepavali 2025",
+        "desc": "Deepavali gala dinner · MIYC Wilayah Persekutuan · hosted in Tamil",
+        "lang": "TA",
+        "register": "formal"
+      },
+      {
+        "year": "2025",
+        "title": "Hari Belia Kawasan Seputeh 2025",
+        "desc": "Youth day for Seputeh constituency · Pejabat Belia Sukan",
+        "lang": "BM",
+        "register": "informal"
+      },
+      {
+        "year": "2025",
+        "title": "Majlis Ramah Mesra Aidilfitri 2025",
+        "desc": "Aidilfitri open-house · Majlis Belia Kawasan Seputeh",
+        "lang": "BM",
+        "register": "formal"
+      },
+      {
+        "year": "2025",
+        "title": "MyCorps Mission 9 · Ignition Ceremony",
+        "desc": "Borneo 2.0 launch · Kementerian Belia & Sukan (KBS)",
+        "lang": "BM",
+        "register": "formal"
+      },
+      {
+        "year": "2024",
+        "title": "Malaya E-Sports Arena 2024",
+        "desc": "Festival Konvokesyen UM 2024 · gaming stage host",
+        "lang": "BM",
+        "register": "informal"
+      },
+      {
+        "year": "2024",
+        "title": "Datathon 2024",
+        "desc": "UM Data Analytics Club · industry judges & competitors",
+        "lang": "EN",
+        "register": "formal"
+      },
+      {
+        "year": "2024",
+        "title": "Project Celik TB 2024",
+        "desc": "TB awareness campaign · FSKTM UM",
+        "lang": "EN",
+        "register": "informal"
+      },
+      {
+        "year": "2024",
+        "title": "Data Science Project Sharing Session",
+        "desc": "UM Data Analytics Club · industry showcase",
+        "lang": "EN",
+        "register": "formal"
+      },
+      {
+        "year": "2024",
+        "title": "Program Kepimpinan Altruistik 2024",
+        "desc": "Leadership programme · MIYC",
+        "lang": "BM",
+        "register": "formal"
+      }
+    ],
+    "keypeople_title": "Shared the stage with",
+    "keypeople": [
+      {
+        "name": "YB Hannah Yeoh",
+        "role": "Minister of KBS"
+      },
+      {
+        "name": "YB Adam Adli",
+        "role": "Deputy Minister of KBS"
+      },
+      {
+        "name": "YB Teresa Kok",
+        "role": "MP Seputeh"
+      },
+      {
+        "name": "Danesh Basil",
+        "role": "President of the Malaysian Indian Youth Council "
+      }
+    ]
+  },
+  "clients": [
+    "KBS",
+    "MyCorps",
+    "MIYC",
+    "Universiti Malaya",
+    "Online Safety IRL",
+    "Majlis Belia Kawasan Seputeh",
+    "UM Data Analytics Club",
+    "UM STEM Society",
+    "Faculty of Computer Science, UM"
+  ],
+  "gallery": {
+    "num": "03",
+    "num_label": "the wall",
+    "title_line1": "Photos taped",
+    "title_line2_ink": "to the board.",
+    "lede": "A little wall of moments — tap any card to open a bigger view.",
+    "items": [
+      {
+        "image": "assets/images/IMG_20260314_090545.jpg",
+        "alt": "",
+        "title": "Play Smart! Play Safe! 2026",
+        "subtitle": "Hosted a community awareness program for school kids",
+        "span": "tall"
+      },
+      {
+        "image": "assets/images/IMG_3526.jpg",
+        "alt": "",
+        "title": "Festival Seni UM 2025  - Malay Dance Category",
+        "subtitle": "The very first Indian to emcee a a fully Malay themed event!",
+        "span": "tall"
+      },
+      {
+        "image": "assets/images/_G8A3258.jpeg",
+        "alt": "UG iFEST 2025 group photo",
+        "title": "UG iFEST 2025 - Universiti Malaya",
+        "subtitle": "Hosted an Industry Forum",
+        "span": "wide"
+      },
+      {
+        "image": "assets/images/UKK_7095.jpeg",
+        "alt": "MyCorps Mission 9 event floor",
+        "title": "MyCorps Ignition Ceremony",
+        "subtitle": "Mission 9 Borneo 2.0 · KBS",
+        "span": "normal"
+      },
+      {
+        "image": "assets/images/IMG_8455.JPG",
+        "alt": "",
+        "title": "Hong Kong ",
+        "subtitle": "Presenting business idea",
+        "span": "normal"
+      },
+      {
+        "image": "assets/images/UKK_7375.jpeg",
+        "alt": "MyCorps team at Ignition Ceremony",
+        "title": "MyCorps Ignition Ceremony",
+        "subtitle": "Booth Presenter",
+        "span": "normal"
+      },
+      {
+        "image": "assets/images/IMG_9791.jpeg",
+        "alt": "",
+        "title": "APRU SDG 2025",
+        "subtitle": "Hosting the Pitching Competition",
+        "span": "wide"
+      },
+      {
+        "image": "assets/images/brainstem.jpeg",
+        "alt": "",
+        "title": "Brain Stem Challenge 2025",
+        "subtitle": "Student challenge event · UM STEM Society",
+        "span": "normal"
+      },
+      {
+        "image": "assets/images/IMG_0239.jpg",
+        "alt": "",
+        "title": "Majlis Makan Malam Deepavali 2025",
+        "subtitle": "Deepavali gala dinner ·",
+        "span": "normal"
+      },
+      {
+        "image": "assets/images/497437828_1005320675121395_7359744066800515316_n.jpg",
+        "alt": "",
+        "title": "Hari Belia Kawasan Seputeh 2025",
+        "subtitle": "",
+        "span": "wide"
+      },
+      {
+        "image": "assets/images/IMG_3295.jpg",
+        "alt": "",
+        "title": "Majlis Ramah Mesra Aidilfitri 2025",
+        "subtitle": "",
+        "span": "normal"
+      },
+      {
+        "image": "assets/images/malaya-esports-arena.JPG",
+        "alt": "",
+        "title": "Malaya E-Sports Arena 2024",
+        "subtitle": "Gaming stage Host",
+        "span": "tall"
+      },
+      {
+        "image": "assets/images/umdacdatathon.jpg",
+        "alt": "",
+        "title": "Datathon 2024",
+        "subtitle": "",
+        "span": "normal"
+      },
+      {
+        "image": "assets/images/6f48561e-a2b0-4bc2-8915-3fdfcecf6b9b.jpg",
+        "alt": "",
+        "title": "Project Celik TB",
+        "subtitle": "",
+        "span": "normal"
+      },
+      {
+        "image": "assets/images/83A38EAB-CD79-43F4-9A1D-4D9910DDA279.jpg",
+        "alt": "",
+        "title": "Program Kepimpinan Altruistik 2024",
+        "subtitle": "",
+        "span": "tall"
+      }
+    ]
+  },
+  "reels": {
+    "title": "↳ short reels",
+    "hint": "hover a reel to play · tap on mobile",
+    "videos": [
+      "assets/videos/b38c407d-648d-4bc8-b7bb-7f610688a7ad.mp4",
+      "assets/videos/6bf4fd62-28fb-47df-bb2c-901e1420a85b.mp4",
+      "assets/videos/a49ebbec-352b-49b3-8e93-b79957e85ab8.mp4",
+      "assets/videos/57c7e163-e07d-4d18-9a96-db71300db92e.mp4",
+      "assets/videos/1986dfb14f9a4897aae723c08f701d64.mp4"
+    ]
+  },
+  "voices": {
+    "num": "04",
+    "num_label": "the room speaks",
+    "title_line1": "What people",
+    "title_line2_ink": "say after.",
+    "items": [
+      {
+        "quote": "Very funny - can do stand up !",
+        "cite": "Repeat feedback across events"
+      },
+      {
+        "quote": "When he speaks Malay, there is no accent !!",
+        "cite": "Audience note, Government programme"
+      },
+      {
+        "quote": "You seem natural with audience interaction !",
+        "cite": "Comments from Peers"
+      }
+    ]
+  },
+  "book": {
+    "title_line1": "Got a stage?",
+    "title_line2_ink": "let's make it a room.",
+    "lede": "Corporate, campus, community, government — happy to talk. Tell me the date, the crowd, the language, and I'll come back with a plan.",
+    "actions": [
+      {
+        "label": "Email me",
+        "href": "mailto:thayananthkumaresan@gmail.com?subject=Booking%20enquiry",
+        "type": "primary"
+      },
+      {
+        "label": "Whatsapp",
+        "href": "https://wa.me/601126111475?text=Hi%20Ananth%2C",
+        "type": "ghost"
+      }
+    ],
+    "facts": []
+  }
+}
