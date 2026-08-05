@@ -29,15 +29,110 @@ const initAnanth = () => {
   }
 
   /* ---------------- loader ---------------- */
-  // Dismiss as soon as init runs (content is already in the DOM by now).
-  // Don't wait for window.load — it may have already fired.
+  // Loader stays up until user taps/keys anywhere. That first gesture
+  // both dismisses the loader AND unlocks audio autoplay (browsers require
+  // a user gesture before letting us play unmuted sound).
+  const loader = $('#loader');
+  let loaderDone = false;
   const dismissLoader = () => {
-    const l = $('#loader'); if (l) l.classList.add('is-done');
+    if (loaderDone) return;
+    loaderDone = true;
+    if (loader) loader.classList.add('is-done');
+    // fire an event so the music module can pick it up
+    document.dispatchEvent(new CustomEvent('loader:dismissed'));
   };
-  setTimeout(dismissLoader, reduced ? 100 : 1200);
+  if (reduced) {
+    // Reduced-motion users: skip the interstitial, dismiss immediately
+    setTimeout(dismissLoader, 100);
+  } else if (loader) {
+    const trigger = (e) => { e.stopPropagation(); dismissLoader(); };
+    loader.addEventListener('click', trigger);
+    loader.addEventListener('touchend', trigger);
+    loader.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); dismissLoader(); }
+    });
+  } else {
+    dismissLoader();
+  }
 
   /* ---------------- footer year ---------------- */
   const yr = $('#yr'); if (yr) yr.textContent = new Date().getFullYear();
+
+  /* ---------------- background music ---------------- */
+  (() => {
+    const music = $('#bgMusic');
+    const toggle = $('#musicToggle');
+    if (!music || !toggle) return;
+
+    window.bgMusic = music;
+    const TARGET_VOL = 0.5;
+    music.volume = 0;
+    music.muted = true;
+
+    // Hide toggle if the audio file 404s / decode fails
+    music.addEventListener('error', () => { toggle.style.display = 'none'; });
+
+    let unlocked = false;
+    const fadeIn = () => {
+      const start = performance.now();
+      const from = music.volume;
+      const dur = 1200;
+      const step = (now) => {
+        const t = Math.min(1, (now - start) / dur);
+        music.volume = from + (TARGET_VOL - from) * t;
+        if (t < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    };
+
+    const unlock = () => {
+      if (unlocked) return;
+      unlocked = true;
+      music.muted = false;
+      music.play().then(() => {
+        fadeIn();
+        toggle.classList.remove('needs-tap', 'is-muted');
+        toggle.classList.add('is-playing');
+      }).catch(() => {
+        // still blocked — user will need to hit the toggle explicitly
+        toggle.classList.add('is-muted');
+        unlocked = false;
+      });
+    };
+
+    // Try muted autoplay on load — many browsers allow this
+    music.play().catch(() => {});
+
+    // Primary unlock: user clicks the loader ("tap to enter") — the click is a
+    // real gesture and satisfies every browser's autoplay policy.
+    document.addEventListener('loader:dismissed', unlock);
+
+    // Fallback: if the loader was auto-dismissed (reduced motion) or the user
+    // skipped it, unlock on any subsequent interaction.
+    const gestureEvents = ['pointerdown', 'keydown', 'touchstart', 'scroll'];
+    const onFirst = () => {
+      unlock();
+      gestureEvents.forEach(e => window.removeEventListener(e, onFirst, true));
+    };
+    gestureEvents.forEach(e => window.addEventListener(e, onFirst, { capture: true, once: false, passive: true }));
+
+    toggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (music.paused || music.muted) {
+        music.muted = false;
+        music.play().then(() => {
+          fadeIn();
+          toggle.classList.remove('is-muted', 'needs-tap');
+          toggle.classList.add('is-playing');
+          unlocked = true;
+        }).catch(() => {});
+      } else {
+        music.pause();
+        toggle.classList.add('is-muted');
+        toggle.classList.remove('is-playing');
+      }
+    });
+  })();
 
   /* ---------------- custom cursor ---------------- */
   const cursor = $('#cursor');
@@ -207,24 +302,85 @@ const initAnanth = () => {
   if (lb) lb.addEventListener('click', (e) => { if (e.target === lb) closeLb(); });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLb(); });
 
-  /* ---------------- reels hover play ---------------- */
-  $$('.reel').forEach((v) => {
-    let played = false;
-    const play = () => { v.play().catch(() => {}); };
-    const pause = () => { v.pause(); };
-    v.addEventListener('mouseenter', play);
-    v.addEventListener('mouseleave', () => { v.pause(); v.currentTime = 0; });
-    v.addEventListener('click', () => {
-      if (v.paused) play(); else pause();
+  /* ---------------- reels ----------------
+     Behavior:
+      - All reels loop silently whenever the reels section is on-screen.
+      - Hover a reel: pause every other reel, unmute the hovered one, duck music.
+      - Leave the reel: mute it and resume silent playback of every reel.
+      - Section scrolls off-screen: pause all reels (they resume on re-enter).
+  */
+  const allReels = $$('.reel');
+  const reelsWrap = $('.reels');
+  let hoveredReel = null;
+  let sectionVisible = false;
+
+  const duckMusic = () => {
+    if (window.bgMusic && !window.bgMusic.paused && window.bgMusic._preDuckVol == null) {
+      window.bgMusic._preDuckVol = window.bgMusic.volume;
+      window.bgMusic.volume = 0.08;
+    }
+  };
+  const unduckMusic = () => {
+    if (window.bgMusic && window.bgMusic._preDuckVol != null) {
+      window.bgMusic.volume = window.bgMusic._preDuckVol;
+      window.bgMusic._preDuckVol = null;
+    }
+  };
+  const playSilent = (v) => {
+    v.loop = true;
+    v.muted = true;
+    v.play().catch(() => {});
+  };
+  const playAllSilent = () => allReels.forEach(playSilent);
+  const pauseAllReels = () => allReels.forEach(v => v.pause());
+
+  allReels.forEach((v) => {
+    v.loop = true;
+    v.muted = true;
+
+    v.addEventListener('mouseenter', () => {
+      hoveredReel = v;
+      // Pause every other reel while this one plays with sound
+      allReels.forEach(other => { if (other !== v) other.pause(); });
+      v.muted = false;
+      v.volume = 1;
+      duckMusic();
+      v.play().catch(() => {});
     });
-    // autoplay first reel briefly on scroll into view
-    const one = new IntersectionObserver((es) => {
-      es.forEach((e) => {
-        if (e.isIntersecting && !played) { played = true; play(); setTimeout(() => v.pause(), 4000); }
-      });
-    }, { threshold: 0.6 });
-    one.observe(v);
+    v.addEventListener('mouseleave', () => {
+      hoveredReel = null;
+      v.muted = true;
+      unduckMusic();
+      // Resume silent playback of every reel (only while the section is on screen)
+      if (sectionVisible) playAllSilent();
+      else v.pause();
+    });
+    v.addEventListener('click', () => {
+      if (v.paused || v.muted) {
+        // treat click as hover-equivalent
+        v.dispatchEvent(new Event('mouseenter'));
+      } else {
+        v.dispatchEvent(new Event('mouseleave'));
+      }
+    });
   });
+
+  if (reelsWrap && allReels.length) {
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        sectionVisible = e.isIntersecting;
+        if (sectionVisible) {
+          // Resume silent playback of every reel that isn't the hovered one
+          allReels.forEach(v => { if (v !== hoveredReel) playSilent(v); });
+        } else {
+          pauseAllReels();
+          hoveredReel = null;
+          unduckMusic();
+        }
+      });
+    }, { threshold: 0.1 });
+    sectionObserver.observe(reelsWrap);
+  }
 
   /* ---------------- parallax polaroids (subtle) ---------------- */
   const polaroids = $$('.polaroid');
@@ -241,13 +397,9 @@ const initAnanth = () => {
 };
 
 // Wait for render.js to populate the DOM before wiring interactions.
-// Unconditional loader dismissal safety net — runs even if initAnanth never fires
-// (e.g. render.js failed to fetch content.json). No matter what, the loader clears
-// within 4s so the page is never permanently stuck on "tuning the mic…".
-setTimeout(() => {
-  const l = document.getElementById('loader');
-  if (l) l.classList.add('is-done');
-}, 4000);
+// Note: the loader intentionally waits for a user click (required to unlock
+// audio autoplay). If render.js errors, initAnanth still runs in degraded mode
+// via the content:rendered fallback below, so the click handler is always wired.
 
 if (document.querySelector('#nav')?.children.length) {
   initAnanth();

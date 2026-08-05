@@ -6,12 +6,23 @@
 <meta name="theme-color" content="#0f1112" />
 <title data-hydrate="meta.site_title">Ananth — Emcee. Host. Storyteller.</title>
 <meta name="description" data-hydrate="meta.description" content="Ananth is a multilingual emcee (Bahasa Malaysia · English · Tamil) hosting stages across Malaysia — from campus fests and gala dinners to government ceremonies." />
+<link rel="icon" type="image/jpeg" href="assets/images/favicon.jpg" />
+<link rel="apple-touch-icon" href="assets/images/favicon.jpg" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Permanent+Marker&family=Anton&family=Bebas+Neue&family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;600&family=Noto+Sans+Tamil:wght@600;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 <body class="chalkboard">
+
+<!-- Background music (muted until first interaction — see main.js) -->
+<audio id="bgMusic" src="assets/audio/intro.mp3" loop preload="auto" playsinline></audio>
+
+<!-- Music toggle -->
+<button id="musicToggle" class="music-toggle" aria-label="toggle music" title="music">
+  <svg class="music-toggle__on"  viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4zM16 8a5 5 0 0 1 0 8M18.5 5.5a9 9 0 0 1 0 13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <svg class="music-toggle__off" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4zM17 9l5 5m0-5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
 
 <!-- Chalk dust canvas -->
 <canvas id="dust" aria-hidden="true"></canvas>
@@ -23,11 +34,11 @@
 </div>
 
 <!-- Loader -->
-<div class="loader" id="loader" aria-hidden="true">
+<div class="loader" id="loader" role="button" tabindex="0" aria-label="Enter site">
   <svg viewBox="0 0 800 240" class="loader__svg" preserveAspectRatio="xMidYMid meet">
     <text x="400" y="160" text-anchor="middle" class="loader__text">ANANTH</text>
   </svg>
-  <span class="loader__sub">tuning the mic…</span>
+  <span class="loader__sub">click anywhere to enter</span>
 </div>
 
 <!-- Navigation -->
@@ -57,8 +68,6 @@
 <!-- Book -->
 <section class="book" id="book" data-render="book"></section>
 
-<!-- Footer -->
-<footer class="foot" data-render="footer"></footer>
 
 <!-- Lightbox -->
 <div class="lightbox" id="lightbox" aria-hidden="true">

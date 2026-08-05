@@ -208,7 +208,6 @@
         grouped[grouped.length - 1].events.push(ev);
       });
       const timeline = grouped.map(g => {
-        const yearRow = `<li class="tl__year"><span>${esc(g.year)}</span></li>`;
         const evs = g.events.map(ev => {
           const lang = esc(ev.lang || '');
           const reg = esc(ev.register || '');
@@ -227,7 +226,11 @@
               </div>
             </li>`;
         }).join('');
-        return yearRow + evs;
+        return `
+          <li class="tl__col">
+            <div class="tl__year"><span>${esc(g.year)}</span></div>
+            <ol class="tl__events">${evs}</ol>
+          </li>`;
       }).join('');
       const keypeople = s.keypeople.map(k => `<li><b>${esc(k.name)}</b><span>${esc(k.role)}</span></li>`).join('');
       return `
