@@ -164,7 +164,8 @@
     about(d) {
       const a = d.about;
       const paragraphs = a.paragraphs.map(p => `<p data-reveal>${inline(p)}</p>`).join('');
-      const chips = a.chips.map(c => `<span class="chip"><b>${esc(c.code)}</b> ${esc(c.label)}</span>`).join('');
+      const chips = (a.chips || []).map(c => `<span class="chip"><b>${esc(c.code)}</b> ${esc(c.label)}</span>`).join('');
+      const chipsBlock = chips ? `<div class="chips" data-reveal>${chips}</div>` : '';
       const stats = a.stats.map(s => `<li><b>${esc(s.b)}</b><span>${esc(s.span)}</span></li>`).join('');
       return `
         <div class="section-num" data-reveal>${esc(a.num)} <span>— ${esc(a.num_label)}</span></div>
@@ -179,7 +180,7 @@
               <span class="quote-mark">“</span>${esc(a.quote.text)}<span class="quote-mark">”</span>
               <span class="about__quote-src">— ${esc(a.quote.source)}</span>
             </p>
-            <div class="chips" data-reveal>${chips}</div>
+            ${chipsBlock}
           </div>
           <div class="about__col about__col--visual">
             <div class="about__portrait" data-reveal>

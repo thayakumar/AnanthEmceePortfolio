@@ -352,6 +352,12 @@ ol, ul { list-style: none; margin: 0; padding: 0; }
 .scribble--star { top: 8%; right: 18%; width: 44px; color: var(--yellow); animation: spin 22s linear infinite; }
 .scribble--spark { bottom: 22%; left: 4%; width: 40px; color: var(--red); animation: pulse 3s ease-in-out infinite; }
 .scribble--underline { bottom: 26%; left: 8%; width: 160px; color: var(--yellow); transform: rotate(-3deg); }
+@media (max-width: 640px) {
+  .scribble--spark,
+  .scribble--underline { display: none; }
+  .scribble--1 { top: 6%; left: 40%; width: 120px; }
+  .scribble--star { top: 4%; right: 10%; width: 34px; }
+}
 @keyframes spin { to { transform: rotate(360deg); } }
 @keyframes pulse { 0%,100% { transform: scale(1); opacity: .7; } 50% { transform: scale(1.15); opacity: 1; } }
 
@@ -833,6 +839,8 @@ ol, ul { list-style: none; margin: 0; padding: 0; }
   font-size: var(--size-about-stats);
   color: var(--chalk);
   letter-spacing: 0.01em;
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 .about__stats span {
   font-family: var(--font-hand);
@@ -840,6 +848,9 @@ ol, ul { list-style: none; margin: 0; padding: 0; }
   color: var(--yellow);
   text-align: right;
   line-height: 1.2;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 /* -------- STAGES / TIMELINE -------- */
@@ -1385,8 +1396,14 @@ ol, ul { list-style: none; margin: 0; padding: 0; }
   .about__col--copy p { font-size: 16px; }
   .about__quote { padding: 20px 20px !important; font-size: 20px !important; }
   .about__portrait { max-width: 100%; margin-bottom: 32px; }
-  .about__stats b { font-size: 20px; }
-  .about__stats span { font-size: 20px; }
+  .about__stats li {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    padding: 14px 0;
+  }
+  .about__stats b { font-size: 20px; white-space: normal; }
+  .about__stats span { font-size: 20px; text-align: left; }
 
   /* Stages / timeline */
   .filters { gap: 8px; }

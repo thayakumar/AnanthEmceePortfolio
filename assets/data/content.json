@@ -120,20 +120,7 @@
       "text": "Held the crowd from kids to Yang Berhormats without breaking pace !",
       "source": "My Proudest Achievement"
     },
-    "chips": [
-      {
-        "code": "BM",
-        "label": "Bahasa Malaysia"
-      },
-      {
-        "code": "EN",
-        "label": "English"
-      },
-      {
-        "code": "TA",
-        "label": "தமிழ்"
-      }
-    ],
+    "chips": [],
     "portrait": {
       "image": "assets/images/IMG_3526.jpg",
       "alt": "Ananth on stage, hand raised",
