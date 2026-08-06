@@ -298,6 +298,27 @@
       `;
     },
 
+    why(d) {
+      const w = d.why;
+      if (!w) return '';
+      const pillars = (w.pillars || []).map(p => `
+        <div class="pillar" data-reveal>
+          <h3 class="pillar__title">${esc(p.title)}</h3>
+          <p class="pillar__desc">${esc(p.desc)}</p>
+        </div>
+      `).join('');
+      return `
+        <div class="section-num" data-reveal>${esc(w.num)} <span>· ${esc(w.num_label)}</span></div>
+        <h2 class="section-title" data-reveal>
+          ${esc(w.title_line1)}<br/>
+          <span class="ink">${esc(w.title_line2_ink)}</span>
+        </h2>
+        <p class="section-lede" data-reveal>${esc(w.lede)}</p>
+        ${w.intro ? `<p class="why__intro" data-reveal>${esc(w.intro)}</p>` : ''}
+        <div class="pillars">${pillars}</div>
+      `;
+    },
+
     voices(d) {
       const v = d.voices;
       const items = v.items.map((q,i) =>

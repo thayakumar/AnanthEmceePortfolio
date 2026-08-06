@@ -26,7 +26,7 @@
       },
       {
         "num": "04",
-        "label": "Voices",
+        "label": "Feedbacks",
         "href": "#voices"
       }
     ],
@@ -102,8 +102,8 @@
     ]
   },
   "marquee": [
+    "formal · informal · loud · funny · energetic ",
     "MALAY · ENGLISH · தமிழ் ·",
-    "formal · informal · loud · quiet ·",
     "campus fests · gala dinners · government ceremonies ·",
     "the room is the show ·"
   ],
@@ -117,23 +117,10 @@
       "What I bring is *energy the room can feel*, three languages I can jump between, and a slightly-comedian instinct that keeps things warm even when the run-sheet gets serious."
     ],
     "quote": {
-      "text": "You seem natural with audience interaction !",
-      "source": "Most Received Feedback"
+      "text": "Held the crowd from kids to Yang Berhormats without breaking pace !",
+      "source": "My Proudest Achievement"
     },
-    "chips": [
-      {
-        "code": "BM",
-        "label": "Bahasa Malaysia"
-      },
-      {
-        "code": "EN",
-        "label": "English"
-      },
-      {
-        "code": "TA",
-        "label": "தமிழ்"
-      }
-    ],
+    "chips": [],
     "portrait": {
       "image": "assets/images/IMG_3526.jpg",
       "alt": "Ananth on stage, hand raised",
@@ -304,88 +291,109 @@
     "lede": "A little wall of moments — tap any card to open a bigger view.",
     "items": [
       {
-        "image": "assets/images/_G8A3023.jpeg",
-        "alt": "Podium at Festival Seni Universiti Malaya",
-        "title": "",
-        "subtitle": "2025 · KL",
+        "image": "assets/images/IMG_20260314_090545.jpg",
+        "alt": "",
+        "title": "Play Smart! Play Safe! 2026",
+        "subtitle": "Hosted a community awareness program for school kids",
         "span": "tall"
       },
       {
-        "image": "assets/images/UKK_7095.jpeg",
-        "alt": "MyCorps Mission 9 event floor",
-        "title": "MyCorps  Ignitio Ceremony",
-        "subtitle": "Mission 9 Borneo 2.0 · KBS",
-        "span": "normal"
+        "image": "assets/images/IMG_3526.jpg",
+        "alt": "",
+        "title": "Festival Seni UM 2025  - Malay Dance Category",
+        "subtitle": "The very first Indian to emcee a a fully Malay themed event!",
+        "span": "tall"
       },
       {
         "image": "assets/images/_G8A3258.jpeg",
         "alt": "UG iFEST 2025 group photo",
-        "title": "UG iFEST '25",
-        "subtitle": "Industry Forum · UM",
+        "title": "UG iFEST 2025 - Universiti Malaya",
+        "subtitle": "Hosted an Industry Forum",
         "span": "wide"
       },
       {
-        "image": "assets/images/_MG_6428.JPG",
-        "alt": "Ananth speaking with microphone",
-        "title": "Brain Stem Challenge",
-        "subtitle": "UM STEM Society",
+        "image": "assets/images/UKK_7095.jpeg",
+        "alt": "MyCorps Mission 9 event floor",
+        "title": "MyCorps Ignition Ceremony",
+        "subtitle": "Mission 9 Borneo 2.0 · KBS",
         "span": "normal"
       },
       {
         "image": "assets/images/IMG_8455.JPG",
-        "alt": "Ananth pointing at SenSAI on screen",
-        "title": "Pitch host",
-        "subtitle": "SenSAI · Entrepreneurship",
-        "span": "tall"
+        "alt": "",
+        "title": "Hong Kong ",
+        "subtitle": "Presenting business idea",
+        "span": "normal"
       },
       {
         "image": "assets/images/UKK_7375.jpeg",
         "alt": "MyCorps team at Ignition Ceremony",
-        "title": "MyCorps Team",
-        "subtitle": "Ignition Ceremony",
+        "title": "MyCorps Ignition Ceremony",
+        "subtitle": "Booth Presenter",
         "span": "normal"
       },
       {
         "image": "assets/images/IMG_9791.jpeg",
-        "alt": "APRU SDG 2025",
-        "title": "APRU SDG",
-        "subtitle": "2025 · UM",
+        "alt": "",
+        "title": "APRU SDG 2025",
+        "subtitle": "Hosting the Pitching Competition",
         "span": "wide"
       },
       {
-        "image": "assets/images/_G8A3020.jpeg",
-        "alt": "Ananth at Lai Kwan podium",
-        "title": "Wide stage",
-        "subtitle": "full-hall host",
+        "image": "assets/images/brainstem.jpeg",
+        "alt": "",
+        "title": "Brain Stem Challenge 2025",
+        "subtitle": "Student challenge event · UM STEM Society",
         "span": "normal"
       },
       {
-        "image": "assets/images/IMG_3526.jpg",
-        "alt": "Traditional attire at Festival Seni UM",
-        "title": "Festival Seni UM",
-        "subtitle": "traditional segment",
+        "image": "assets/images/IMG_0239.jpg",
+        "alt": "",
+        "title": "Majlis Makan Malam Deepavali 2025",
+        "subtitle": "Deepavali gala dinner ·",
         "span": "normal"
       },
       {
-        "image": "assets/images/IMG_4101.JPG",
-        "alt": "Ananth mic close-up",
-        "title": "Portrait",
-        "subtitle": "Brain Stem Challenge",
+        "image": "assets/images/497437828_1005320675121395_7359744066800515316_n.jpg",
+        "alt": "",
+        "title": "Hari Belia Kawasan Seputeh 2025",
+        "subtitle": "",
+        "span": "wide"
+      },
+      {
+        "image": "assets/images/IMG_3295.jpg",
+        "alt": "",
+        "title": "Majlis Ramah Mesra Aidilfitri 2025",
+        "subtitle": "",
+        "span": "normal"
+      },
+      {
+        "image": "assets/images/malaya-esports-arena.JPG",
+        "alt": "",
+        "title": "Malaya E-Sports Arena 2024",
+        "subtitle": "Gaming stage Host",
         "span": "tall"
       },
       {
-        "image": "assets/images/IMG_6727.JPG",
-        "alt": "Casual host moment",
-        "title": "Deep summit",
-        "subtitle": "candid",
+        "image": "assets/images/umdacdatathon.jpg",
+        "alt": "",
+        "title": "Datathon 2024",
+        "subtitle": "",
         "span": "normal"
       },
       {
-        "image": "assets/images/IMG_6733.JPG",
-        "alt": "Event host",
-        "title": "Deep summit",
-        "subtitle": "on stage",
+        "image": "assets/images/6f48561e-a2b0-4bc2-8915-3fdfcecf6b9b.jpg",
+        "alt": "",
+        "title": "Project Celik TB",
+        "subtitle": "",
         "span": "normal"
+      },
+      {
+        "image": "assets/images/83A38EAB-CD79-43F4-9A1D-4D9910DDA279.jpg",
+        "alt": "",
+        "title": "Program Kepimpinan Altruistik 2024",
+        "subtitle": "",
+        "span": "tall"
       }
     ]
   },
@@ -393,34 +401,60 @@
     "title": "↳ short reels",
     "hint": "hover a reel to play · tap on mobile",
     "videos": [
-      "assets/videos/b38c407d-648d-4bc8-b7bb-7f610688a7ad.mp4",
       "assets/videos/6bf4fd62-28fb-47df-bb2c-901e1420a85b.mp4",
       "assets/videos/a49ebbec-352b-49b3-8e93-b79957e85ab8.mp4",
       "assets/videos/57c7e163-e07d-4d18-9a96-db71300db92e.mp4",
-      "assets/videos/1986dfb14f9a4897aae723c08f701d64.mp4"
+      "assets/videos/1986dfb14f9a4897aae723c08f701d64.mp4",
+      "assets/videos/IMG_3812.mp4"
+    ]
+  },
+  "why": {
+    "num": "04",
+    "num_label": "the pitch",
+    "title_line1": "Why",
+    "title_line2_ink": "Ananth?",
+    "lede": "Every event has its own energy. My job as emcee is to read it, match it, and keep the room with us from open to close.",
+    "intro": "A quick sense of how I work:",
+    "pillars": [
+      {
+        "title": "Three Languages, One Mic",
+        "desc": "Fluent in Bahasa Malaysia, English, and Tamil, with real depth in all three (not phrasebook level). Comfortable switching between them mid-run-sheet, or picking one and staying there."
+      },
+      {
+        "title": "Formal to Festive",
+        "desc": "Ministerial pacing at a government ceremony. Warmth and light comedy at a gala dinner. Same emcee, different tone, always matched to the room."
+      },
+      {
+        "title": "Prep Before Stage",
+        "desc": "I take the time to understand your run-sheet, your guests, and what you want your audience to walk away feeling. Fewer surprises on the day, more chance we hit the moment on the night."
+      },
+      {
+        "title": "Reads the Room Fast",
+        "desc": "Kids' safety programmes, campus fests, government ceremonies, and community dinners in the same year. That range taught me to gauge energy quickly and adjust without breaking flow."
+      },
+      {
+        "title": "Steady When Things Slip",
+        "desc": "Late speakers, mic issues, mid-agenda changes. I stay calm, keep the audience with us, and hand the show back to you looking like nothing shifted."
+      }
     ]
   },
   "voices": {
-    "num": "04",
+    "num": "05",
     "num_label": "the room speaks",
     "title_line1": "What people",
     "title_line2_ink": "say after.",
     "items": [
       {
-        "quote": "funny — comedian feeling.",
-        "cite": "repeat feedback across events"
+        "quote": "Very funny - can do stand up !",
+        "cite": "Repeat feedback across events"
       },
       {
-        "quote": "when he speaks Malay, no accent.",
-        "cite": "audience note, government programme"
+        "quote": "When he speaks Malay, there is no accent.",
+        "cite": "Audience note, Government programme"
       },
       {
-        "quote": "certified by Shahril Sarapuddin.",
-        "cite": "mentor endorsement"
-      },
-      {
-        "quote": "held the crowd from kids to Yang Berhormats without breaking pace.",
-        "cite": "summary of the range"
+        "quote": "You seem natural with audience interaction.",
+        "cite": "Comments from Peers"
       }
     ]
   },
@@ -430,19 +464,14 @@
     "lede": "Corporate, campus, community, government — happy to talk. Tell me the date, the crowd, the language, and I'll come back with a plan.",
     "actions": [
       {
-        "label": "email me",
-        "href": "mailto:hello@ananth.emcee?subject=Booking%20enquiry",
+        "label": "Email me",
+        "href": "mailto:thayananthkumaresan@gmail.com?subject=Booking%20enquiry",
         "type": "primary"
       },
       {
-        "label": "whatsapp",
-        "href": "https://wa.me/60000000000?text=Hi%20Ananth%2C",
-        "type": "ghost"
-      },
-      {
-        "label": "instagram",
-        "href": "https://instagram.com/",
-        "type": "ghost"
+        "label": "Whatsapp",
+        "href": "https://wa.me/601126111475?text=Hi%20Ananth%2C",
+        "type": "primary"
       }
     ],
     "facts": []

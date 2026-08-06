@@ -351,6 +351,40 @@
       `;
     },
 
+    // ---------- WHY (pitch pillars) ----------
+    why() {
+      if (!state.data.why) {
+        state.data.why = {
+          num: '04',
+          num_label: 'the pitch',
+          title_line1: 'Why',
+          title_line2_ink: 'Ananth?',
+          lede: '',
+          intro: '',
+          pillars: []
+        };
+      }
+      return `
+        <div class="section-head"><h2>Why Ananth?</h2><span class="sub">the pitch · pillars shown before booking CTA</span></div>
+        <div class="grid-2">
+          ${fld.text('Section number', 'why.num')}
+          ${fld.text('Section number sub-label', 'why.num_label')}
+        </div>
+        ${fld.text('Title · line 1', 'why.title_line1')}
+        ${fld.text('Title · line 2 (ink)', 'why.title_line2_ink')}
+        ${fld.textarea('Lede (opening statement)', 'why.lede', { rows: 3 })}
+        ${fld.text('Intro line before pillars', 'why.intro', { placeholder: 'A quick sense of how I work:' })}
+
+        ${listBlock('Pillars (drag to reorder)', 'why.pillars', {
+           itemFields: (it, i) => `
+             ${fld.text('Title', `why.pillars.${i}.title`)}
+             ${fld.textarea('Description', `why.pillars.${i}.desc`, { rows: 3 })}`,
+           addLabel: '+ add pillar',
+           newItem: () => ({ title: 'New pillar', desc: 'One or two sentences.' }),
+        })}
+      `;
+    },
+
     // ---------- VOICES ----------
     voices() {
       return `
@@ -834,6 +868,7 @@
     if (p === 'clients')           return () => 'New Client';
     if (p === 'gallery.items')     return () => ({ image:'', alt:'', title:'', subtitle:'', span:'normal' });
     if (p === 'reels.videos')      return () => 'assets/videos/new.mp4';
+    if (p === 'why.pillars')       return () => ({ title:'New pillar', desc:'One or two sentences.' });
     if (p === 'voices.items')      return () => ({ quote:'New quote.', cite:'attribution' });
     if (p === 'book.actions')      return () => ({ label:'button', href:'#', type:'ghost' });
     if (p === 'book.facts')        return () => ({ b:'Label', text:'value' });

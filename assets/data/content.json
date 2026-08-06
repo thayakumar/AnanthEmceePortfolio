@@ -408,8 +408,34 @@
       "assets/videos/IMG_3812.mp4"
     ]
   },
-  "voices": {
+  "why": {
     "num": "04",
+    "num_label": "the pitch",
+    "title_line1": "Why",
+    "title_line2_ink": "Ananth?",
+    "lede": "Every event has its own energy. My job as emcee is to read it, match it, and keep the room with us from open to close.",
+    "intro": "A quick sense of how I work:",
+    "pillars": [
+      {
+        "title": "Three Languages, One Mic",
+        "desc": "Fluent in Bahasa Malaysia, English, and Tamil, with real depth in all three (not phrasebook level). Comfortable switching between them mid-run-sheet, or picking one and staying there."
+      },
+      {
+        "title": "Formal to Festive",
+        "desc": "Ministerial pacing at a government ceremony. Warmth and light comedy at a gala dinner. Same emcee, different tone, always matched to the room."
+      },
+      {
+        "title": "Genuine Connection",
+        "desc": "For Ananth, great emceeing isn't just about speaking well; it's about making people feel seen, included, and part of the moment."
+      },
+      {
+        "title": "Reads the Room Fast",
+        "desc": "Kids' safety programmes, campus fests, government ceremonies, and community dinners in the same year. That range taught me to gauge energy quickly and adjust without breaking flow."
+      }
+    ]
+  },
+  "voices": {
+    "num": "05",
     "num_label": "the room speaks",
     "title_line1": "What people",
     "title_line2_ink": "say after.",
